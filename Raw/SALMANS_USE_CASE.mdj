@@ -293,7 +293,7 @@
 											"top": 99.5,
 											"width": 178,
 											"height": 13,
-											"text": "MakeAvailableDateAndTime"
+											"text": "CreateSchedule"
 										},
 										{
 											"_type": "LabelView",
@@ -1133,7 +1133,7 @@
 											"top": 371.5,
 											"width": 126,
 											"height": 13,
-											"text": "MakeSchedule"
+											"text": "SelectSchedule"
 										},
 										{
 											"_type": "LabelView",
@@ -6044,7 +6044,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFsK2weyArLXTw="
 					},
-					"name": "MakeAvailableDateAndTime"
+					"name": "CreateSchedule"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -6076,7 +6076,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFsK2weyArLXTw="
 					},
-					"name": "MakeSchedule"
+					"name": "SelectSchedule"
 				},
 				{
 					"_type": "UMLUseCase",
