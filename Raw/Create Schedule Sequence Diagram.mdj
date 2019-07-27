@@ -9394,7 +9394,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFsMRGgp69e0ns="
 					},
-					"name": "Role2"
+					"name": "Role2",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -9402,7 +9403,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFsMRGgp69e0ns="
 					},
-					"name": "Role3"
+					"name": "Role3",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -9410,7 +9412,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFsMRGgp69e0ns="
 					},
-					"name": "Role4"
+					"name": "Role4",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -9418,7 +9421,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFsMRGgp69e0ns="
 					},
-					"name": "Role5"
+					"name": "Role5",
+					"type": ""
 				}
 			]
 		}
