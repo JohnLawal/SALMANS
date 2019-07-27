@@ -7047,7 +7047,7 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"width": 1217,
+									"width": 953,
 									"height": 595,
 									"nameLabel": {
 										"$ref": "AAAAAAFsMFlPosNEsAY="
@@ -7792,7 +7792,7 @@
 													"font": "Arial;13;0",
 													"left": 813,
 													"top": 45,
-													"width": 78.6689453125,
+													"width": 93.052734375,
 													"height": 13,
 													"text": "«boundary»"
 												},
@@ -7805,9 +7805,9 @@
 													"font": "Arial;13;1",
 													"left": 813,
 													"top": 60,
-													"width": 78.6689453125,
+													"width": 93.052734375,
 													"height": 13,
-													"text": "Database"
+													"text": "SALMANSDB"
 												},
 												{
 													"_type": "LabelView",
@@ -7838,7 +7838,7 @@
 											"font": "Arial;13;0",
 											"left": 808,
 											"top": 40,
-											"width": 88.6689453125,
+											"width": 103.052734375,
 											"height": 40,
 											"stereotypeLabel": {
 												"$ref": "AAAAAAFsMLDlk0VDnWg="
@@ -7863,7 +7863,7 @@
 												"$ref": "AAAAAAFsMLDlk0VAJ2Q="
 											},
 											"font": "Arial;13;0",
-											"left": 852,
+											"left": 860,
 											"top": 80,
 											"width": 1,
 											"height": 160
@@ -7872,7 +7872,7 @@
 									"font": "Arial;13;0",
 									"left": 808,
 									"top": 40,
-									"width": 88.6689453125,
+									"width": 103.052734375,
 									"height": 200,
 									"nameCompartment": {
 										"$ref": "AAAAAAFsMLDlk0VCnuA="
@@ -7965,7 +7965,7 @@
 												"$ref": "AAAAAAFsMLKeqUVjjM8="
 											},
 											"font": "Arial;13;0",
-											"left": 845,
+											"left": 853,
 											"top": 145,
 											"width": 14,
 											"height": 29
@@ -7978,7 +7978,7 @@
 									"tail": {
 										"$ref": "AAAAAAFsMJ8g4ETnXW8="
 									},
-									"points": "592:145;845:145",
+									"points": "592:145;853:145",
 									"nameLabel": {
 										"$ref": "AAAAAAFsMLKeqkVlZsc="
 									},
@@ -7993,56 +7993,12 @@
 									}
 								},
 								{
-									"_type": "UMLNoteLinkView",
-									"_id": "AAAAAAFsMLrD50WB8eU=",
-									"_parent": {
-										"$ref": "AAAAAAFsMFlPocNCT28="
-									},
-									"font": "Arial;13;0",
-									"head": {
-										"$ref": "AAAAAAFsMFlPosNDpVU="
-									},
-									"tail": {
-										"$ref": "AAAAAAFsMFlPosNDpVU="
-									},
-									"points": "608:0;608:-20;1246:-20;1246:297;1216:297"
-								},
-								{
-									"_type": "UMLNoteLinkView",
-									"_id": "AAAAAAFsMLralUWEygQ=",
-									"_parent": {
-										"$ref": "AAAAAAFsMFlPocNCT28="
-									},
-									"font": "Arial;13;0",
-									"head": {
-										"$ref": "AAAAAAFsMFlPosNDpVU="
-									},
-									"tail": {
-										"$ref": "AAAAAAFsMFlPosNDpVU="
-									},
-									"points": "608:0;608:-20;1246:-20;1246:297;1216:297"
-								},
-								{
-									"_type": "UMLNoteLinkView",
-									"_id": "AAAAAAFsMLr5xEWHEX8=",
-									"_parent": {
-										"$ref": "AAAAAAFsMFlPocNCT28="
-									},
-									"font": "Arial;13;0",
-									"head": {
-										"$ref": "AAAAAAFsMFlPosNDpVU="
-									},
-									"tail": {
-										"$ref": "AAAAAAFsMFlPosNDpVU="
-									},
-									"points": "608:0;608:-20;1246:-20;1246:297;1216:297"
-								},
-								{
 									"_type": "UMLNoteView",
 									"_id": "AAAAAAFsMPv/PEWL4ro=",
 									"_parent": {
 										"$ref": "AAAAAAFsMFlPocNCT28="
 									},
+									"fillColor": "#f5e8e8",
 									"font": "Arial;13;0",
 									"left": 600,
 									"top": 200,
@@ -8171,7 +8127,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFsMFlPocNBdXc="
 							},
-							"name": "Database",
+							"name": "SALMANSDB",
 							"stereotype": "boundary",
 							"represent": {
 								"$ref": "AAAAAAFsMLDlk0U/jxk="
@@ -8226,8 +8182,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFsMFlPoMNAtNE="
 					},
-					"name": "Role5",
-					"type": ""
+					"name": "Role5"
 				}
 			]
 		},
