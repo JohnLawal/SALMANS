@@ -9,6 +9,8 @@ import edu.mum.cs.salmans.repository.ServiceTimeRepository;
 import edu.mum.cs.salmans.service.AppointmentService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AppointmentServiceImplementation implements AppointmentService {
     private BusinessDayRepository businessDayRepository;
@@ -36,6 +38,7 @@ public class AppointmentServiceImplementation implements AppointmentService {
         seatRepository.save(seat);
     }
 
+
     @Override
     public boolean defaultBusinessDaysExist() {
         return businessDayRepository.count() > 0;
@@ -49,6 +52,16 @@ public class AppointmentServiceImplementation implements AppointmentService {
     @Override
     public boolean defaultServiceTimesExist() {
         return serviceTimeRepository.count() > 0;
+    }
+
+    @Override
+    public List<Seat> getAllSeats() {
+        return seatRepository.findAll();
+    }
+
+    @Override
+    public List<ServiceTime> getAllServiceTimes() {
+        return serviceTimeRepository.findAll();
     }
 
 }

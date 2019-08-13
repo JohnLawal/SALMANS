@@ -2,8 +2,8 @@ package edu.mum.cs.salmans.models;
 
 import javax.persistence.*;
 import java.time.LocalTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "service_times")
@@ -19,8 +19,7 @@ public class ServiceTime {
     private LocalTime endTime;
 
     @ManyToMany
-    @JoinTable(name = "join_service_time_seats")
-    private Set<Seat> seats = new HashSet<>();
+    private List<Seat> seats = new ArrayList<>();
 
     public ServiceTime() {
     }
@@ -30,7 +29,7 @@ public class ServiceTime {
         this.endTime = endTime;
     }
 
-    public ServiceTime(LocalTime startTime, LocalTime endTime, Set<Seat> seats) {
+    public ServiceTime(LocalTime startTime, LocalTime endTime, List<Seat> seats) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.seats = seats;
@@ -60,11 +59,11 @@ public class ServiceTime {
         this.endTime = endTime;
     }
 
-    public Set<Seat> getSeats() {
+    public List<Seat> getSeats() {
         return seats;
     }
 
-    public void setSeats(Set<Seat> seats) {
+    public void setSeats(List<Seat> seats) {
         this.seats = seats;
     }
 

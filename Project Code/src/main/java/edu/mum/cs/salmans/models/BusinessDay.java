@@ -2,8 +2,8 @@ package edu.mum.cs.salmans.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "business_days")
@@ -15,13 +15,13 @@ public class BusinessDay {
     @NotBlank(message = "Day of The Week is Required")
     private String dayOfTheWeek;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<ServiceTime> serviceTimes = new HashSet<>();
+    @ManyToMany
+    private List<ServiceTime> serviceTimes = new ArrayList<>();
 
     public BusinessDay() {
     }
 
-    public BusinessDay(String dayOfTheWeek, Set<ServiceTime> serviceTimes) {
+    public BusinessDay(String dayOfTheWeek, List<ServiceTime> serviceTimes) {
         this.dayOfTheWeek = dayOfTheWeek;
         this.serviceTimes = serviceTimes;
     }
@@ -46,11 +46,11 @@ public class BusinessDay {
         this.dayOfTheWeek = dayOfTheWeek;
     }
 
-    public Set<ServiceTime> getServiceTimes() {
+    public List<ServiceTime> getServiceTimes() {
         return serviceTimes;
     }
 
-    public void setServiceTimes(Set<ServiceTime> serviceTimes) {
+    public void setServiceTimes(List<ServiceTime> serviceTimes) {
         this.serviceTimes = serviceTimes;
     }
 

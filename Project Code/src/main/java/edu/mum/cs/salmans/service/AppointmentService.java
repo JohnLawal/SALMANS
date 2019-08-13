@@ -4,6 +4,8 @@ import edu.mum.cs.salmans.models.BusinessDay;
 import edu.mum.cs.salmans.models.Seat;
 import edu.mum.cs.salmans.models.ServiceTime;
 
+import java.util.List;
+
 public interface AppointmentService {
     public void saveBusinessDay(BusinessDay businessDay);
 
@@ -16,5 +18,9 @@ public interface AppointmentService {
     public boolean defaultSeatsExist();
 
     public boolean defaultServiceTimesExist();
+
+    public List<Seat> getAllSeats();
+
+    public List<ServiceTime> getAllServiceTimes();
 
 }
