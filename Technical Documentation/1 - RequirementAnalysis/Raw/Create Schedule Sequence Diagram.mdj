@@ -503,7 +503,7 @@
 											"top": 203.5,
 											"width": 126,
 											"height": 13,
-											"text": "View Schedule"
+											"text": "View Appointments"
 										},
 										{
 											"_type": "LabelView",
@@ -923,7 +923,7 @@
 											"top": 291.5,
 											"width": 126,
 											"height": 13,
-											"text": "Cancel Schedule"
+											"text": "Cancel Appointment"
 										},
 										{
 											"_type": "LabelView",
@@ -959,7 +959,7 @@
 									"font": "Arial;13;0",
 									"left": 636.5,
 									"top": 284.5,
-									"width": 136,
+									"width": 136.39453125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFsK25rhgub7Yw="
@@ -1133,7 +1133,7 @@
 											"top": 371.5,
 											"width": 126,
 											"height": 13,
-											"text": "Select Schedule"
+											"text": "Make Appointment"
 										},
 										{
 											"_type": "LabelView",
@@ -6520,7 +6520,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFsK2weyArLXTw="
 					},
-					"name": "View Schedule"
+					"name": "View Appointments"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -6536,7 +6536,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFsK2weyArLXTw="
 					},
-					"name": "Cancel Schedule"
+					"name": "Cancel Appointment"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -6544,7 +6544,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFsK2weyArLXTw="
 					},
-					"name": "Select Schedule"
+					"name": "Make Appointment"
 				},
 				{
 					"_type": "UMLUseCase",

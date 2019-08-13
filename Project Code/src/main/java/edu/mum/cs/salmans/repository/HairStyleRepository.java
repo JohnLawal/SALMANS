@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HairStyleRepository extends JpaRepository<HairStyle, Long> {
+public interface HairStyleRepository extends JpaRepository<HairStyle, Integer> {
 }

@@ -1,6 +1,5 @@
 package edu.mum.cs.salmans.models;
 
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import javax.websocket.OnOpen;
@@ -39,9 +38,6 @@ public class Appointment {
     @JoinColumn(name = "hairstyle_fk")
     private HairStyle hairStyle;
 
-    @OneToOne
-    @JoinColumn(name = "seat_fk")
-    private Seat seat;
 
     @OneToOne
     @JoinColumn(name = "service_time_fk")
@@ -51,13 +47,12 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(LocalDate appointmentDate, LocalDate dateScheduled, User hairstylist, User customer, HairStyle hairStyle, Seat seat, ServiceTime serviceTime) {
+    public Appointment(LocalDate appointmentDate, LocalDate dateScheduled, User hairstylist, User customer, HairStyle hairStyle, ServiceTime serviceTime) {
         this.appointmentDate = appointmentDate;
         this.dateScheduled = dateScheduled;
         this.hairstylist = hairstylist;
         this.customer = customer;
         this.hairStyle = hairStyle;
-        this.seat = seat;
         this.serviceTime = serviceTime;
     }
 
@@ -107,14 +102,6 @@ public class Appointment {
 
     public void setHairStyle(HairStyle hairStyle) {
         this.hairStyle = hairStyle;
-    }
-
-    public Seat getSeat() {
-        return seat;
-    }
-
-    public void setSeat(Seat seat) {
-        this.seat = seat;
     }
 
     public ServiceTime getServiceTime() {

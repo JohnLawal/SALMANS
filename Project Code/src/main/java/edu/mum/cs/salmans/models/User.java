@@ -39,14 +39,14 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "roleId", referencedColumnName = "roleId")})
     private Role role;
 
-    @Column(nullable = true, name = "seat_fk")
     @OneToOne
+    @JoinColumn(name = "seat_fk", nullable = true)
     private Seat seat;
 
     public User() {
     }
 
-    public User(String fullName,  String email, String password, LocalDate dateRegistered, Role role, Seat seat) {
+    public User(String fullName, String email, String password, LocalDate dateRegistered, Role role, Seat seat) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;

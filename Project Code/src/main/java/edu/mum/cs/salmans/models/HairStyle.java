@@ -17,6 +17,14 @@ public class HairStyle {
     @Column(nullable = false)
     private String imageUrl;
 
+    public HairStyle( String hairstyleName, String imageUrl) {
+        this.hairstyleName = hairstyleName;
+        this.imageUrl = imageUrl;
+    }
+
+    public HairStyle() {
+    }
+
     private Integer getHairstyleId() {
         return hairstyleId;
     }
