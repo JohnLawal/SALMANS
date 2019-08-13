@@ -201,7 +201,7 @@
 											"left": 154,
 											"top": 105,
 											"width": 1,
-											"height": 34
+											"height": 42
 										}
 									],
 									"fillColor": "#f8e8e8",
@@ -209,7 +209,7 @@
 									"left": 98,
 									"top": 40,
 									"width": 112.5654296875,
-									"height": 99,
+									"height": 107,
 									"stereotypeDisplay": "icon",
 									"nameCompartment": {
 										"$ref": "AAAAAAFsi4llZ/Oi5lY="
@@ -368,11 +368,13 @@
 													"_parent": {
 														"$ref": "AAAAAAFsi4teh/PiSnk="
 													},
-													"visible": false,
 													"fillColor": "#f8e8e8",
 													"font": "Arial;13;0",
-													"left": -288,
-													"height": 13
+													"left": 541,
+													"top": 45,
+													"width": 101.01904296875,
+													"height": 13,
+													"text": "«control»"
 												},
 												{
 													"_type": "LabelView",
@@ -383,7 +385,7 @@
 													"fillColor": "#f8e8e8",
 													"font": "Arial;13;1",
 													"left": 541,
-													"top": 47,
+													"top": 60,
 													"width": 101.01904296875,
 													"height": 13,
 													"text": "UserController"
@@ -490,11 +492,13 @@
 													"_parent": {
 														"$ref": "AAAAAAFsi4ujkfQDwFg="
 													},
-													"visible": false,
 													"fillColor": "#f8e8e8",
 													"font": "Arial;13;0",
-													"left": -256,
-													"height": 13
+													"left": 765,
+													"top": 45,
+													"width": 62.736328125,
+													"height": 13,
+													"text": "«entity»"
 												},
 												{
 													"_type": "LabelView",
@@ -505,7 +509,7 @@
 													"fillColor": "#f8e8e8",
 													"font": "Arial;13;1",
 													"left": 765,
-													"top": 47,
+													"top": 60,
 													"width": 62.736328125,
 													"height": 13,
 													"text": "User"
@@ -612,11 +616,13 @@
 													"_parent": {
 														"$ref": "AAAAAAFsi4wRI/Qmv/k="
 													},
-													"visible": false,
 													"fillColor": "#f8e8e8",
 													"font": "Arial;13;0",
-													"left": 48,
-													"height": 13
+													"left": 965,
+													"top": 45,
+													"width": 147.24267578125,
+													"height": 13,
+													"text": "«boundary»"
 												},
 												{
 													"_type": "LabelView",
@@ -627,7 +633,7 @@
 													"fillColor": "#f8e8e8",
 													"font": "Arial;13;1",
 													"left": 965,
-													"top": 47,
+													"top": 60,
 													"width": 147.24267578125,
 													"height": 13,
 													"text": "SALMANSDBInterface"
@@ -1779,6 +1785,7 @@
 								"$ref": "AAAAAAFsi3z0NvLlMS0="
 							},
 							"name": "UserController",
+							"stereotype": "control",
 							"represent": {
 								"$ref": "AAAAAAFsi4teh/PfIV0="
 							},
@@ -1791,6 +1798,7 @@
 								"$ref": "AAAAAAFsi3z0NvLlMS0="
 							},
 							"name": "User",
+							"stereotype": "entity",
 							"represent": {
 								"$ref": "AAAAAAFsi4ujkfQAUIw="
 							},
@@ -1803,6 +1811,7 @@
 								"$ref": "AAAAAAFsi3z0NvLlMS0="
 							},
 							"name": "SALMANSDBInterface",
+							"stereotype": "boundary",
 							"represent": {
 								"$ref": "AAAAAAFsi4wRF/Qjt7Y="
 							},
@@ -1849,7 +1858,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFsi3z0NvLkiFc="
 					},
-					"name": "Role2"
+					"name": "Role2",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -1881,7 +1891,8 @@
 					"_parent": {
 						"$ref": "AAAAAAFsi3z0NvLkiFc="
 					},
-					"name": "Role6"
+					"name": "Role6",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
