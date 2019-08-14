@@ -2,6 +2,7 @@ package edu.mum.cs.salmans.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,9 +15,6 @@ public class Role {
     @Column(nullable = false, unique = true)
     @NotEmpty
     private String roleName;
-
-    @OneToMany(mappedBy = "role")
-    private List<User> users;
 
     public Integer getRoleId() {
         return roleId;
@@ -34,22 +32,11 @@ public class Role {
         this.roleName = name;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public void addUser(User user){
-        this.users.add(user);
-    }
-
     public Role(String roleName) {
         this.roleName = roleName;
     }
-    public Role(){
+
+    public Role() {
 
     }
 }

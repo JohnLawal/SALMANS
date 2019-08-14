@@ -19,7 +19,7 @@ public class User {
     private String fullName;
 
     @NotBlank(message = "Email is Required")
-    @Column(unique = true, nullable = false)
+    @Column(name = "username", unique = true, nullable = false)
     @Email(message = "{errors.invalid_email}")
     private String email;
 
@@ -32,11 +32,7 @@ public class User {
     private LocalDate dateRegistered;
     //should be set by code when saving to DB for first time
 
-    @ManyToOne
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = {@JoinColumn(name = "userId", referencedColumnName = "userId")},
-            inverseJoinColumns = {@JoinColumn(name = "roleId", referencedColumnName = "roleId")})
+    @OneToOne
     private Role role;
 
     @OneToOne
