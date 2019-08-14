@@ -1,9 +1,6 @@
 package edu.mum.cs.salmans;
 
-import edu.mum.cs.salmans.models.BusinessDay;
-import edu.mum.cs.salmans.models.Role;
-import edu.mum.cs.salmans.models.Seat;
-import edu.mum.cs.salmans.models.ServiceTime;
+import edu.mum.cs.salmans.models.*;
 import edu.mum.cs.salmans.serviceImpl.AppointmentServiceImplementation;
 import edu.mum.cs.salmans.serviceImpl.UserServiceImplementation;
 import edu.mum.cs.salmans.utility.AppHelper;
@@ -14,12 +11,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-//@SpringBootApplication
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication
+//@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class SalmansApplication implements CommandLineRunner {
     private AppointmentServiceImplementation appointmentServiceImplementation;
     private UserServiceImplementation userServiceImplementation;
@@ -37,18 +35,6 @@ public class SalmansApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         //initialize DB records
-
-        //default roles
-        if(!userServiceImplementation.defaultRolesExist()){
-            Role adminRole = new Role(AppValues.ROLE_ADMIN.toString());
-            Role hairstylistRole = new Role(AppValues.ROLE_HAIRSTYLIST.toString());
-            Role customerRole = new Role(AppValues.ROLE_CUSTOMER.toString());
-
-            userServiceImplementation.saveRole(adminRole);
-            userServiceImplementation.saveRole(hairstylistRole);
-            userServiceImplementation.saveRole(customerRole);
-        }
-
         //default seats
         if (!appointmentServiceImplementation.defaultSeatsExist()) {
             List<Seat> seats = getSeats();
@@ -56,6 +42,43 @@ public class SalmansApplication implements CommandLineRunner {
                 appointmentServiceImplementation.saveSeat(seat);
             }
         }
+
+        //default roles
+        if (!userServiceImplementation.defaultRolesExist()) {
+            Role adminRole = new Role(AppValues.ROLE_ADMIN.toString());
+            Role hairstylistRole = new Role(AppValues.ROLE_HAIRSTYLIST.toString());
+            Role customerRole = new Role(AppValues.ROLE_CUSTOMER.toString());
+
+            userServiceImplementation.saveRole(adminRole);
+            userServiceImplementation.saveRole(hairstylistRole);
+            userServiceImplementation.saveRole(customerRole);
+
+            //default hairstylists
+            hairstylistRole = userServiceImplementation.getRole(AppValues.ROLE_HAIRSTYLIST.toString());
+            customerRole = userServiceImplementation.getRole(AppValues.ROLE_CUSTOMER.toString());
+            List<Seat> savedSeats = appointmentServiceImplementation.getAllSeats();
+
+            User hairstylist1 = new User("Chinedu Ugwu", "chinedu@salmans.com", "$2a$10$/X9HVgmtzI3nbCfKgsJPde1mFpY4tMU3v5NObDwIY.1FKKNyaJHYq"
+                    , LocalDate.of(2019, 8, 13), hairstylistRole, savedSeats.get(0));
+            User hairstylist2 = new User("Kelvin Amiaka", "kelvin@salmans.com", "$2a$10$/X9HVgmtzI3nbCfKgsJPde1mFpY4tMU3v5NObDwIY.1FKKNyaJHYq"
+                    , LocalDate.of(2019, 8, 11), hairstylistRole, savedSeats.get(1));
+            User hairstylist3 = new User("Wago Kedi", "wago@salmans.com", "$2a$10$/X9HVgmtzI3nbCfKgsJPde1mFpY4tMU3v5NObDwIY.1FKKNyaJHYq"
+                    , LocalDate.of(2019, 8, 12), hairstylistRole, savedSeats.get(2));
+
+            userServiceImplementation.saveUser(hairstylist1);
+            userServiceImplementation.saveUser(hairstylist2);
+            userServiceImplementation.saveUser(hairstylist3);
+            //
+            User customer1 = new User("John Lawal", "john@salmans.com", "$2a$10$/X9HVgmtzI3nbCfKgsJPde1mFpY4tMU3v5NObDwIY.1FKKNyaJHYq"
+                    , LocalDate.of(2019, 7, 10), customerRole);
+            User customer2 = new User("Moses Niyonshuti", "moses@salmans.com", "$2a$10$/X9HVgmtzI3nbCfKgsJPde1mFpY4tMU3v5NObDwIY.1FKKNyaJHYq"
+                    , LocalDate.of(2019, 7, 11), customerRole);
+
+            userServiceImplementation.saveUser(customer1);
+            userServiceImplementation.saveUser(customer2);
+//
+        }
+
 
         //default service times
         if (!appointmentServiceImplementation.defaultServiceTimesExist()) {
@@ -114,13 +137,13 @@ public class SalmansApplication implements CommandLineRunner {
         returnedSeats.add(new Seat(1));
         returnedSeats.add(new Seat(2));
         returnedSeats.add(new Seat(3));
-        returnedSeats.add(new Seat(4));
-        returnedSeats.add(new Seat(5));
-        returnedSeats.add(new Seat(6));
-        returnedSeats.add(new Seat(7));
-        returnedSeats.add(new Seat(8));
-        returnedSeats.add(new Seat(9));
-        returnedSeats.add(new Seat(10));
+//        returnedSeats.add(new Seat(4));
+//        returnedSeats.add(new Seat(5));
+//        returnedSeats.add(new Seat(6));
+//        returnedSeats.add(new Seat(7));
+//        returnedSeats.add(new Seat(8));
+//        returnedSeats.add(new Seat(9));
+//        returnedSeats.add(new Seat(10));
         return returnedSeats;
     }
 
