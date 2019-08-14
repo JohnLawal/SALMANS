@@ -8,11 +8,9 @@ import edu.mum.cs.salmans.serviceImpl.AppointmentServiceImplementation;
 import edu.mum.cs.salmans.serviceImpl.UserServiceImplementation;
 import edu.mum.cs.salmans.utility.AppHelper;
 import edu.mum.cs.salmans.utility.AppValues;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
