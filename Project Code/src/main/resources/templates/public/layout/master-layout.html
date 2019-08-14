@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="author" content="O. Chinedu">
+    <link rel="icon" href="favicon.ico">
+    <!--    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">-->
+
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/united/bootstrap.min.css" rel="stylesheet" integrity="sha384-WTtvlZJeRyCiKUtbQ88X1x9uHmKi0eHCbQ8irbzqSLkE0DpAZuixT5yFvgX0CjIu" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/master.css}">
+    <title>eDPR - Wakanda Record Tracking System</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a style="padding-right: 2em;" class="navbar-brand" th:href="@{${page_links.get('siteRoot')}}">Wakanda DPR System : : :  eDPR System</a>
+    <!--<span style="color: #ffffff;"> &nbsp; | &nbsp;</span>-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+<!--            <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">-->
+<!--                <a class="nav-link" th:href="@{${page_links.get('siteRoot')}}">About</a>-->
+<!--            </li>-->
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;float: right">
+                <a class="nav-link" th:href="@{${page_links.get('login')}}">Login</a>
+            </li>
+            <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;float: right">
+                <a class="nav-link" th:href="@{${page_links.get('siteRoot')}}">Sign Up</a>
+            </li>
+        </ul>
+<!--        <form class="form-inline my-2 my-lg-0">-->
+<!--           -->
+<!--            <span style="color: #ffffff; margin-right: 0em;" th:text="${#temporals.format(now, 'EEEE, MMM dd, yyyy')}" />-->
+<!--        </form>-->
+    </div>
+</nav>
+
+<p>&nbsp;</p>
+
+<div class="container">
+    <!--Thymeleaf placeholder for the page Content-->
+
+    <th:block layout:fragment="content"></th:block>
+    <!--End placeholder-->
+</div>
+
+<footer class="footer" style="margin-top: 30px">
+    <div class="container">
+        <span class="text-muted">U. Chinedu : : : CS425-SWE FINAL EXAM</span><span style="float:right;" class="text-muted">&copy; August 2019</span>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+</body>
+</html>

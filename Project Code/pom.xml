@@ -58,7 +58,10 @@
             <scope>test</scope>
         </dependency>
 
+<<<<<<< HEAD
         <!-- https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect -->
+=======
+>>>>>>> 0bafd01f6e86b9569f643beb7d92ce0e5963aef9
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
