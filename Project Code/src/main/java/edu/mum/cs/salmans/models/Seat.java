@@ -14,15 +14,12 @@ public class Seat {
     @NotNull(message = "Seat Number is Required")
     private Integer seatNumber;
 
-    @OneToOne(mappedBy = "seat")
-    private User hairstylist;
 
     public Seat() {
     }
 
-    public Seat(Integer seatNumber, User hairstylist) {
+    public Seat(Integer seatNumber) {
         this.seatNumber = seatNumber;
-        this.hairstylist = hairstylist;
     }
 
     public Integer getSeatId() {
@@ -41,11 +38,4 @@ public class Seat {
         this.seatNumber = seatNumber;
     }
 
-    public User getHairstylist() {
-        return hairstylist;
-    }
-
-    public void setHairstylist(User hairstylist) {
-        this.hairstylist = hairstylist;
-    }
 }

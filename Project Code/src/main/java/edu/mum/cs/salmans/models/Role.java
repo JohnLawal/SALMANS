@@ -46,5 +46,10 @@ public class Role {
         this.users.add(user);
     }
 
+    public Role(String roleName) {
+        this.roleName = roleName;
+    }
+    public Role(){
 
+    }
 }
