@@ -19,7 +19,7 @@ public class User {
     private String fullName;
 
     @NotBlank(message = "Email is Required")
-    @Column(name = "username", unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     @Email(message = "{errors.invalid_email}")
     private String email;
 

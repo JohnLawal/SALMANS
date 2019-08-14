@@ -52,9 +52,15 @@ public class SalmansApplication implements CommandLineRunner {
             userServiceImplementation.saveRole(customerRole);
 
             //default hairstylists
+            adminRole = userServiceImplementation.getRole(AppValues.ROLE_ADMIN.toString());
             hairstylistRole = userServiceImplementation.getRole(AppValues.ROLE_HAIRSTYLIST.toString());
             customerRole = userServiceImplementation.getRole(AppValues.ROLE_CUSTOMER.toString());
             List<Seat> savedSeats = appointmentServiceImplementation.getAllSeats();
+
+            User admin = new User("Mr Luns", "luns@salmans.com", "$2a$10$/X9HVgmtzI3nbCfKgsJPde1mFpY4tMU3v5NObDwIY.1FKKNyaJHYq"
+                    , LocalDate.of(2019, 8, 13), adminRole);
+            userServiceImplementation.saveUser(admin);
+
 
             User hairstylist1 = new User("Chinedu Ugwu", "chinedu@salmans.com", "$2a$10$/X9HVgmtzI3nbCfKgsJPde1mFpY4tMU3v5NObDwIY.1FKKNyaJHYq"
                     , LocalDate.of(2019, 8, 13), hairstylistRole, savedSeats.get(0));
