@@ -38,4 +38,11 @@ public class Seat {
         this.seatNumber = seatNumber;
     }
 
+    @Override
+    public String toString() {
+        return "Seat{" +
+                "seatId=" + seatId +
+                ", seatNumber=" + seatNumber +
+                '}';
+    }
 }

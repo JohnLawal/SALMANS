@@ -1,9 +1,7 @@
 package edu.mum.cs.salmans.service;
 
-import edu.mum.cs.salmans.models.Appointment;
-import edu.mum.cs.salmans.models.BusinessDay;
-import edu.mum.cs.salmans.models.Seat;
-import edu.mum.cs.salmans.models.ServiceTime;
+import edu.mum.cs.salmans.models.*;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,6 +24,10 @@ public interface AppointmentService {
     public List<Seat> getAllSeats();
 
     public List<ServiceTime> getAllServiceTimes();
+
+    Page<Appointment> getAllAppointmentsPaged(int page);
+
+    Page<Appointment> getAllAppointmentsBookedByUserPaged(User user, int page);
 
     public void makeAppointment(Appointment appointment);
 
