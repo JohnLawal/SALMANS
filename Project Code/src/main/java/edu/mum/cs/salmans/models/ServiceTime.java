@@ -12,10 +12,6 @@ public class ServiceTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer timeId;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer hoursId;
-
     @Column(nullable = false)
     private LocalTime startTime;
 

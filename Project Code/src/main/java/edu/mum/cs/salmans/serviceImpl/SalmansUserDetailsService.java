@@ -21,9 +21,14 @@ public class SalmansUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("Email Address " + email + " not found"));
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(username)
+                .orElseThrow(() -> {
+                    System.out.println(new UsernameNotFoundException("Email Address " + username + " not found"));
+                            return new UsernameNotFoundException("Email Address " + username + " not found");
+                        }
+                );
+
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 getAuthorities(user));
     }

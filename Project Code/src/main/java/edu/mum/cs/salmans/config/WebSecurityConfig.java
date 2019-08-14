@@ -1,5 +1,6 @@
 package edu.mum.cs.salmans.config;
 
+import edu.mum.cs.salmans.utility.PageUrlLocator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -55,13 +56,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/salmans/login")
-                .defaultSuccessUrl("/salmans/home")
+                .defaultSuccessUrl("/salmans/home", true)
                 .failureUrl("/salmans/login?error")
                 .permitAll()
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/salmans/logout"))
-                .logoutSuccessUrl("/salmans/login?logout")
+                .logoutSuccessUrl("/salmans/home")
                 .permitAll()
                 .and()
                 .exceptionHandling();
