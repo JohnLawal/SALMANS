@@ -12,10 +12,10 @@ import java.time.LocalDate;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value= PageUrlLocator.HOME_URL)
-    public String displayHome(Model model) {
-        model.addAttribute("page_links", AppHelper.publicPageLinks);
-        model.addAttribute("now", LocalDate.now());
-        return PageFileLocator.HOME_PAGE.toString();
-    }
+//    @RequestMapping(value= PageUrlLocator.HOME_URL)
+//    public String displayHome(Model model) {
+//        model.addAttribute("page_links", AppHelper.publicPageLinks);
+//        model.addAttribute("now", LocalDate.now());
+//        return PageFileLocator.HOME_PAGE.toString();
+//    }
 }

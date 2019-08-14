@@ -1,12 +1,9 @@
 package edu.mum.cs.salmans.models;
 
 import javax.persistence.*;
-
 import java.time.LocalTime;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 @Table(name = "service_times")
@@ -15,10 +12,8 @@ public class ServiceTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer timeId;
 
-
     @Column(nullable = false)
     private LocalTime startTime;
-
 
     @Column(nullable = false)
     private LocalTime endTime;
