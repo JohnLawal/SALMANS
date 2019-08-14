@@ -7,6 +7,8 @@ import edu.mum.cs.salmans.repository.UserRepository;
 import edu.mum.cs.salmans.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImplementation implements UserService {
     private RoleRepository roleRepository;
@@ -35,6 +37,11 @@ public class UserServiceImplementation implements UserService {
     @Override
     public void saveUser(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 

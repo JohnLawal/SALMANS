@@ -49,5 +49,12 @@ public class HairStyle {
         this.imageUrl = imageUrl;
     }
 
-
+    @Override
+    public String toString() {
+        return "HairStyle{" +
+                "hairstyleId=" + hairstyleId +
+                ", hairstyleName='" + hairstyleName + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
 }

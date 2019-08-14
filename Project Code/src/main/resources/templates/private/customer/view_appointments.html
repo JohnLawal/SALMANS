@@ -13,7 +13,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a th:href="@{${pageLinks.dashboard}}"><i class="fa fa-dashboard"></i>
-                Dashboard</a></li>
+                Dashboard </a></li>
             <li class="active" th:text="${pageTitle}"></li>
         </ol>
     </section>
@@ -55,7 +55,7 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div class="btn-group" style="float: right;margin: 8px;">
+                        <div class="btn-group" style="float: right;margin: 8px;" th:if="${appointments.totalPages > 0}">
                             <button type="button" class="btn btn-default">Pages:</button>
                             <a type="button" th:each="i : ${#numbers.sequence(1, appointments.totalPages)}"
                                th:class="${currentPageNo}==${i-1}?'btn btn-primary':'btn btn-default'"

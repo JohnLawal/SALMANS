@@ -114,4 +114,17 @@ public class User {
     public void setSeat(Seat seat) {
         this.seat = seat;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", dateRegistered=" + dateRegistered +
+                ", role=" + role +
+                ", seat=" + seat +
+                '}';
+    }
 }

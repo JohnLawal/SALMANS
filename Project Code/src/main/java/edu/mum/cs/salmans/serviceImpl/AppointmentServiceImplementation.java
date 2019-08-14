@@ -4,6 +4,9 @@ import edu.mum.cs.salmans.models.*;
 import edu.mum.cs.salmans.repository.*;
 import edu.mum.cs.salmans.service.AppointmentService;
 import edu.mum.cs.salmans.utility.AppValues;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -100,6 +103,17 @@ public class AppointmentServiceImplementation implements AppointmentService {
     public List<ServiceTime> getAllServiceTimes() {
         return serviceTimeRepository.findAll();
     }
+
+    @Override
+    public Page<Appointment> getAllAppointmentsPaged(int page) {
+        return appointmentRepository.findAll(PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(AppValues.APPOINTMENT_SORT_BY.val())));
+    }
+
+    @Override
+    public Page<Appointment> getAllAppointmentsBookedByUserPaged(User user, int page) {
+        return appointmentRepository.findAllByCustomerEquals(user, PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(AppValues.APPOINTMENT_SORT_BY.val())));
+    }
+
 
     @Override
     public void makeAppointment(Appointment appointment) {

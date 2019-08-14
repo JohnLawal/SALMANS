@@ -3,6 +3,7 @@ package edu.mum.cs.salmans.utility;
 public enum AppValues {
     SITE_ROOT("home"),
     USERS_SORT_BY("fullName"),
+    APPOINTMENT_SORT_BY("dateScheduled"),
     ENTRIES_PER_PAGE(5),
     SITE_NAME("salmans"),
     REDIRECT("redirect:"),
