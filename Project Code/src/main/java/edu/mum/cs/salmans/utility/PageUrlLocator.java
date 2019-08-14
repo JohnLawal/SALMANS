@@ -21,4 +21,6 @@ public class PageUrlLocator {
     public static final String CUSTOMER_MAKE_APPOINTMENT_URL = "/salmans/customer/make_appointment";
     public static final String CUSTOMER_CANCEL_APPOINTMENT_URL = "/salmans/customer/cancel_appointment/{appointmentId}";
 
+    ///AJAX CALLS
+    public static final String CUSTOMER_VERIFY_DATE_URL = "/salmans/customer/verify_date";
 }

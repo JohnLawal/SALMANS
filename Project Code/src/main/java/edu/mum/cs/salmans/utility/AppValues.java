@@ -6,6 +6,8 @@ public enum AppValues {
     ENTRIES_PER_PAGE(5),
     SITE_NAME("salmans"),
     REDIRECT("redirect:"),
+    SUCCESS("success"),
+    FAILURE("failure"),
     ROLE_ADMIN("ROLE_ADMIN"),
     ROLE_HAIRSTYLIST("ROLE_HAIRSTYLIST"),
     ROLE_CUSTOMER("ROLE_CUSTOMER");
