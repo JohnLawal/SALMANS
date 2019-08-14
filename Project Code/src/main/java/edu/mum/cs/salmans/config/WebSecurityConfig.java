@@ -28,6 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService salmansUserDetailsService;
 
     @Autowired
+    private SuccessfulLoginRedirect redirectUrl;
+
+    @Autowired
     private DataSource dataSource;
 
     @Bean
@@ -56,7 +59,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/salmans/login")
-                .defaultSuccessUrl("/salmans/home", true)
+                .permitAll()
+                .successHandler(redirectUrl)
                 .failureUrl("/salmans/login?error")
                 .permitAll()
                 .and()
