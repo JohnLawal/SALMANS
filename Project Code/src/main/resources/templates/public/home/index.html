@@ -22,16 +22,17 @@
 <th:block layout:fragment="content">
     <div class="side-top">
         <div class="logo-sidebar">
-            <a  href="index.html"><img th:src="@{/salmans/public/home/images/logos/logo.png}" alt="image"></a>
+            <a  th:href="@{${page_links.get('siteRoot')}}" href="index.html"><img th:src="@{/salmans/public/home/images/logos/logo.png}" alt="image"></a>
         </div>
         <ul class="sidebar-nav">
             <li><a class="active" th:href="@{${page_links.get('siteRoot')}}">Home</a></li>
+            <li><a th:href="@{${page_links.get('login')}}">Login</a></li>
+            <li><a th:href="@{${page_links.get('siteRoot')}}">Sign Up</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="services.html">Our Services</a></li>
             <li><a href="barbers.html">Our Barbers</a></li>
             <li><a href="appointment.html">Appointment</a></li>
-            <li><a th:href="@{${page_links.get('login')}}">Login</a></li>
-            <li><a th:href="@{${page_links.get('siteRoot')}}">Sign Up</a></li>
+
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
