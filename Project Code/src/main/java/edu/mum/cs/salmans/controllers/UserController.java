@@ -153,7 +153,7 @@ public class UserController {
     }
 
     @GetMapping(value = {PageUrlLocator.CUSTOMER_CANCEL_APPOINTMENT_URL})
-    public String deleteAppointment(@PathVariable Integer appointmentId, Model model) {
+    public String cancelAppointment(@PathVariable Integer appointmentId, Model model) {
         appointmentServiceImplementation.deleteAppointmentById(appointmentId);
         return AppValues.REDIRECT.val() + PageUrlLocator.CUSTOMER_VIEW_APPOINTMENTS_URL;
     }
