@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{public/layout/master-layout}">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/salmans/public/login/vendor/bootstrap/css/bootstrap.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/salmans/public/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/salmans/public/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/salmans/public/login/vendor/animate/animate.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/salmans/public/login/vendor/css-hamburgers/hamburgers.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/salmans/public/login/vendor/animsition/css/animsition.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/salmans/public/login/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/salmans/public/login/vendor/daterangepicker/daterangepicker.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/salmans/public/login/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/salmans/public/login/css/main.css}">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+<th:block layout:fragment="content">
+
+    <div id="page-content-wrapper">
+
+        <div class="limiter">
+            <div class="container-login100">
+
+                <div class="wrap-login100">
+
+                    <form class="login100-form validate-form" style="padding: 50px 65px 40px 65px;"
+                          th:action="@{/salmans/sign_up}"
+                          method="post" id="signUpForm" th:object="${customer}">
+
+                        <div class="logo-sidebar" style="    margin-bottom: 50px;">
+                            <a th:href="@{${page_links.get('siteRoot')}}" style="margin-left: 40%;">
+                                <img th:src="@{/salmans/public/home/images/logos/logo.png}" alt="image">
+                            </a>
+                        </div>
+
+                        <span class="login100-form-title p-b-34">
+						Account SignUp
+					    </span>
+
+                        <fieldset style="min-width: 100%">
+                            <input type="hidden" name="userId" th:value="${customer.userId}"/>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="fullName">Full Name</label>
+                                        <span th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"
+                                              class="alert alert-danger"></span>
+                                        <input id="fullName" name="fullName" type="text" class="form-control"
+                                               th:value="${customer.fullName}">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                              class="alert alert-danger"></span>
+                                        <input id="email" name="email" type="email" class="form-control"
+                                               th:value="${customer.email}">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                              class="alert alert-danger"></span>
+                                        <input id="password" name="password" type="password" class="form-control"
+                                               th:value="${customer.password}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn" type="submit">
+                                    Sign Up
+                                </button>
+                            </div>
+
+                            <div class="w-full text-center p-t-27 p-b-239" style="padding-bottom: 90px;">
+						    <span class="txt1">
+						     	Already registered?
+                            </span>
+                                <a th:href="@{${page_links.get('login')}}" class="txt2">
+                                    login
+                                </a>
+                            </div>
+
+                        </fieldset>
+                    </form>
+
+                    <div class="login100-more"
+                         style="background-image:url('/salmans/public/home/uploads/barber_slider.jpg')"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="dropDownSelect1"></div>
+    </div>
+</th:block>
+
+
+<!--===============================================================================================-->
+<script th:src="@{/salmans/public/login/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/salmans/public/login/vendor/animsition/js/animsition.min.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/salmans/public/login/vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{/salmans/public/login/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<script>
+    $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+</script>
+<!--===============================================================================================-->
+<script th:src="@{/salmans/public/login/vendor/daterangepicker/moment.min.js}"></script>
+<script th:src="@{/salmans/public/login/vendor/daterangepicker/daterangepicker.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/salmans/public/login/vendor/countdowntime/countdowntime.js}"></script>
+<!--===============================================================================================-->
+<script th:src="@{/salmans/js/main.js}"></script>
+
+</body>
+</html>

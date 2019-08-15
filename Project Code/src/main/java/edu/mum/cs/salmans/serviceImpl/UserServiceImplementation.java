@@ -7,8 +7,10 @@ import edu.mum.cs.salmans.repository.UserRepository;
 import edu.mum.cs.salmans.service.UserService;
 import edu.mum.cs.salmans.utility.AppValues;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.RoleNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,6 +50,11 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email).orElse(null);
+    }
+
+    @Override
     public Optional<User> getHairstylistWithId(Integer userId) {
         return userRepository.findById(userId);
 //        return userRepository.findByRoleEqualsAndUserIdEquals(getRole(AppValues.ROLE_HAIRSTYLIST.toString()), userId);
@@ -58,5 +65,17 @@ public class UserServiceImplementation implements UserService {
         return userRepository.findByRoleEquals(getRole(AppValues.ROLE_HAIRSTYLIST.toString()), Sort.by(AppValues.USERS_SORT_BY.toString()));
     }
 
+    @Override
+    public User saveCustomer(User customer) throws RoleNotFoundException {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        customer.setDateRegistered(customer.getDateRegistered());
+        Role role =  getRole("ROLE_CUSTOMER");
+        if(role == null) {
+            throw new RoleNotFoundException("Role not found");
+        }
+        customer.setRole(role);
+        return userRepository.save(customer);
+    }
 
 }

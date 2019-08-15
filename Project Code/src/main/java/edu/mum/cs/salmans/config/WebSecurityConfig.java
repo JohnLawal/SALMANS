@@ -54,6 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**", "/salmans/public/**", "/webjars/**", "/assets/**").permitAll()
                 .antMatchers("/salmans", "/salmans/about").permitAll()
                 .antMatchers("/salmans", "/salmans/home").permitAll()
+                .antMatchers("/salmans", "/salmans/sign_up").permitAll()
                 .antMatchers("/salmans/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()

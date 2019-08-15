@@ -39,9 +39,11 @@
             <div class="container-login100">
 
                 <div class="wrap-login100">
-                    <form class="login100-form validate-form" style="padding: 100px 65px 40px 65px;" th:action="@{/salmans/login}" method="post">
-                        <div class="logo-sidebar">
-                            <a  th:href="@{${page_links.get('siteRoot')}}" href="index.html"><img th:src="@{/salmans/public/home/images/logos/logo.png}" alt="image"></a>
+                    <form class="login100-form validate-form" style="padding: 50px 65px 40px 65px;" th:action="@{/salmans/login}" method="post">
+                        <div class="logo-sidebar" style="    margin-bottom: 50px;">
+                            <a  th:href="@{${page_links.get('siteRoot')}}" style="margin-left: 40%;">
+                                <img th:src="@{/salmans/public/home/images/logos/logo.png}" alt="image">
+                            </a>
                         </div>
 
                         <div th:if="${param.error}" class="alert alert-dismissible alert-danger">
@@ -86,13 +88,13 @@
                         </div>
 
                         <div class="w-full text-center">
-                            <a href="#" class="txt3">
+                            <a th:href="@{${page_links.get('signUp')}}" class="txt3">
                                 Sign Up
                             </a>
                         </div>
                     </form>
 
-                    <div class="login100-more" style="background-image: url(/salmans/public/login/images/bg-01.jpg)"></div>
+                    <div class="login100-more" style="background-image:url('/salmans/public/home/uploads/barber_slider.jpg')"></div>
                 </div>
             </div>
         </div>

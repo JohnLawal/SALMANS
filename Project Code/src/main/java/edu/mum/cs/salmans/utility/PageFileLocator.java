@@ -5,7 +5,7 @@ public enum PageFileLocator {
     HOME_PAGE("public/home/index"),
     LOGIN_PAGE("public/auth/login"),
     LOGOUT_PAGE("public/auth/logout"),
-    SIGN_UP_PAGE("public/auth/sign_up"),
+    SIGN_UP_PAGE("public/auth/sign-up"),
     //    ADMIN
     ADMIN_DASHBOARD_PAGE("private/admin/dashboard"),
     ADMIN_ADD_HAIRSTYLE_PAGE("private/admin/add_hairstyle"),
