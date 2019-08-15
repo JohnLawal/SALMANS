@@ -5,8 +5,11 @@ import edu.mum.cs.salmans.models.User;
 import edu.mum.cs.salmans.repository.RoleRepository;
 import edu.mum.cs.salmans.repository.UserRepository;
 import edu.mum.cs.salmans.service.UserService;
+import edu.mum.cs.salmans.utility.AppValues;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,6 +45,17 @@ public class UserServiceImplementation implements UserService {
     @Override
     public Optional<User> getUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public Optional<User> getHairstylistWithId(Integer userId) {
+        return userRepository.findById(userId);
+//        return userRepository.findByRoleEqualsAndUserIdEquals(getRole(AppValues.ROLE_HAIRSTYLIST.toString()), userId);
+    }
+
+    @Override
+    public List<User> getAllHairStylists() {
+        return userRepository.findByRoleEquals(getRole(AppValues.ROLE_HAIRSTYLIST.toString()), Sort.by(AppValues.USERS_SORT_BY.toString()));
     }
 
 

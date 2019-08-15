@@ -18,7 +18,8 @@ public enum PageFileLocator {
     //    CUSTOMER
     CUSTOMER_DASHBOARD_PAGE("private/customer/dashboard"),
     CUSTOMER_VIEW_APPOINTMENTS_PAGE("private/customer/view_appointments"),
-    CUSTOMER_MAKE_APPOINTMENT_PAGE("private/customer/make_appointment");
+    CUSTOMER_MAKE_APPOINTMENT_PAGE("private/customer/make_appointment"),
+    CUSTOMER_MAKE_REVIEW_PAGE("private/customer/make_review");
 
     private String val;
 

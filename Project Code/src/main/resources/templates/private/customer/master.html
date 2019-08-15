@@ -22,7 +22,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" th:href="@{/assets/dist/css/salmans.min.css}">
     <!-- Skins-->
-    <link rel="stylesheet" th:href="@{/assets/dist/css/skin-yellow.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/dist/css/skin-green.min.css}">
     <!-- Select2 -->
     <link rel="stylesheet" th:href="@{/assets/plugins/select2/select2.min.css}">
     <!-- bootstrap datepicker -->
@@ -38,7 +38,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-yellow sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper" id="body-wrapper">
     <header id="header" class="main-header">
         <!-- Logo -->
@@ -106,9 +106,14 @@
                             <li><a th:href="@{${pageLinks.makeAppointment}}"><i
                                     class="fa fa-circle-o"></i> <span>Make An Appointment</span></a></li>
                             <li><a th:href="@{${pageLinks.viewAppointments}}"><i
-                                    class="fa fa-circle-o"></i> <span>View Appointments</span></a></li>
+                                    class="fa fa-circle-o"></i> <span>View My Appointments</span></a></li>
                         </ul>
                     </li>
+
+                    <li class="treeview"><a th:href="@{${pageLinks.makeReview}}"><i
+                            class="fa fa-comment-o"></i> <span>Make A Review</span></a></li>
+
+
                     <li class="treeview"><a th:href="@{${pageLinks.logout}}"><i
                             class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
 

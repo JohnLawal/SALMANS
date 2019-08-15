@@ -47,6 +47,10 @@ public class AppointmentServiceImplementation implements AppointmentService {
         seatRepository.save(seat);
     }
 
+    @Override
+    public void saveAppointment(Appointment appointment) {
+        appointmentRepository.save(appointment);
+    }
 
     @Override
     public boolean defaultBusinessDaysExist() {
@@ -64,7 +68,7 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
-    public boolean seatIsAvailable(LocalDate appointmentDate, ServiceTime serviceTime) {
+    public boolean seatIsAvailable(LocalDate appointmentDate, ServiceTime serviceTime, User hairstylist) {
         // for a date to be available,
         //the day of the date should be among the business days table and it should have this service time
 
@@ -72,20 +76,10 @@ public class AppointmentServiceImplementation implements AppointmentService {
         Optional<BusinessDay> businessDayWithTime = businessDayRepository.findByDayOfTheWeekEqualsAndServiceTimesContains(dayOfWeek, serviceTime);
         if (businessDayWithTime.isPresent()) {
             ///then we check if an appointment already exists for that appointment date, with the service time
-            Optional<Appointment> existingAppointmentForDateAndTime = appointmentRepository.findByAppointmentDateEqualsAndServiceTimeEquals(appointmentDate, serviceTime);
-            if (existingAppointmentForDateAndTime.isPresent()) {
-                //then we get all the hairstylist and check if at least one is not tied to an appointment for that hour
-                Role hairstylistRole = roleRepository.findByRoleNameEquals(AppValues.ROLE_HAIRSTYLIST.toString()).get();
-                List<User> hairstylists = userRepository.findByRoleEquals(hairstylistRole);
-                boolean freeHairstylistExists = false;
-                for (User hairstylist : hairstylists) {
-                    Optional<Appointment> existingAppointmentForDateAndTimeAndHairstylist = appointmentRepository.findByAppointmentDateEqualsAndServiceTimeEqualsAndHairstylistEquals(appointmentDate, serviceTime, hairstylist);
-                    if (!existingAppointmentForDateAndTimeAndHairstylist.isPresent()) {
-                        freeHairstylistExists = true;
-                        break;
-                    }
-                }
-                return freeHairstylistExists;
+            List<Appointment> existingAppointmentForDateAndTime = appointmentRepository.findByAppointmentDateEqualsAndServiceTimeEquals(appointmentDate, serviceTime);
+            if (existingAppointmentForDateAndTime.size() > 0) {
+                Optional<Appointment> existingAppointmentForDateAndTimeAndHairstylist = appointmentRepository.findByAppointmentDateEqualsAndServiceTimeEqualsAndHairstylistEquals(appointmentDate, serviceTime, hairstylist);
+                return (!existingAppointmentForDateAndTimeAndHairstylist.isPresent());
             } else {
                 return true;
             }
@@ -102,6 +96,11 @@ public class AppointmentServiceImplementation implements AppointmentService {
     @Override
     public List<ServiceTime> getAllServiceTimes() {
         return serviceTimeRepository.findAll();
+    }
+
+    @Override
+    public Optional<ServiceTime> getServiceTimeWithId(Integer serviceTimeId) {
+        return serviceTimeRepository.findById(serviceTimeId);
     }
 
     @Override

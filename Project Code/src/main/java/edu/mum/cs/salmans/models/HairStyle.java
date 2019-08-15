@@ -14,38 +14,42 @@ public class HairStyle {
     @Column(nullable = false)
     private String hairstyleName;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String imageUrl;
 
-    public HairStyle( String hairstyleName, String imageUrl) {
+    public HairStyle(String hairstyleName, String imageUrl) {
         this.hairstyleName = hairstyleName;
         this.imageUrl = imageUrl;
+    }
+
+    public HairStyle(String hairstyleName) {
+        this.hairstyleName = hairstyleName;
     }
 
     public HairStyle() {
     }
 
-    private Integer getHairstyleId() {
+    public Integer getHairstyleId() {
         return hairstyleId;
     }
 
-    private String getHairstyleName() {
-        return hairstyleName;
-    }
-
-    private String getImageUrl() {
-        return imageUrl;
-    }
-
-    private void setHairstyleId(Integer hairstyleId) {
+    public void setHairstyleId(Integer hairstyleId) {
         this.hairstyleId = hairstyleId;
     }
 
-    private void setHairstyleName(String hairstyleName) {
+    public String getHairstyleName() {
+        return hairstyleName;
+    }
+
+    public void setHairstyleName(String hairstyleName) {
         this.hairstyleName = hairstyleName;
     }
 
-    private void setImageUrl(String imageUrl) {
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 

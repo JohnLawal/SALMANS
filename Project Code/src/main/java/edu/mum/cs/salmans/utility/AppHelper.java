@@ -40,6 +40,7 @@ public class AppHelper {
             put("dashboard", PageUrlLocator.CUSTOMER_DASHBOARD_URL);
             put("viewAppointments", PageUrlLocator.CUSTOMER_VIEW_APPOINTMENTS_URL);
             put("makeAppointment", PageUrlLocator.CUSTOMER_MAKE_APPOINTMENT_URL);
+            put("makeReview", PageUrlLocator.CUSTOMER_MAKE_REVIEW_URL);
             put("logout", PageUrlLocator.LOGOUT_URL);
         }
     };
