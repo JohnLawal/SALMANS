@@ -1,6 +1,8 @@
 package edu.mum.cs.salmans.models;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.websocket.OnOpen;
 import java.time.LocalDate;
@@ -16,6 +18,7 @@ public class Appointment {
      * refers to the date chosen
      * */
     @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate appointmentDate;
 
     /***
@@ -23,6 +26,7 @@ public class Appointment {
      * not the date the user chose
      * */
     @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateScheduled;
     //should be set when saving appointment
 

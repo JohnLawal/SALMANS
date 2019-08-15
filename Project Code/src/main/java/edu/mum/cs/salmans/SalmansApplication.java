@@ -2,6 +2,7 @@ package edu.mum.cs.salmans;
 
 import edu.mum.cs.salmans.models.*;
 import edu.mum.cs.salmans.serviceImpl.AppointmentServiceImplementation;
+import edu.mum.cs.salmans.serviceImpl.HairStyleServiceImplementation;
 import edu.mum.cs.salmans.serviceImpl.UserServiceImplementation;
 import edu.mum.cs.salmans.utility.AppHelper;
 import edu.mum.cs.salmans.utility.AppValues;
@@ -19,10 +20,12 @@ import java.util.List;
 public class SalmansApplication implements CommandLineRunner {
     private AppointmentServiceImplementation appointmentServiceImplementation;
     private UserServiceImplementation userServiceImplementation;
+    private HairStyleServiceImplementation hairStyleServiceImplementation;
 
-    public SalmansApplication(AppointmentServiceImplementation appointmentServiceImplementation, UserServiceImplementation userServiceImplementation) {
+    public SalmansApplication(AppointmentServiceImplementation appointmentServiceImplementation, UserServiceImplementation userServiceImplementation,HairStyleServiceImplementation hairStyleServiceImplementation) {
         this.appointmentServiceImplementation = appointmentServiceImplementation;
         this.userServiceImplementation = userServiceImplementation;
+        this.hairStyleServiceImplementation = hairStyleServiceImplementation;
     }
 
 
@@ -33,6 +36,16 @@ public class SalmansApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         //initialize DB records
+
+        //default hairstyles
+        if (!hairStyleServiceImplementation.defaultStylesExist()) {
+            List<HairStyle> styles = getHairstyles();
+            for (HairStyle style : styles) {
+                hairStyleServiceImplementation.saveStyle(style);
+            }
+        }
+
+
         //default seats
         if (!appointmentServiceImplementation.defaultSeatsExist()) {
             List<Seat> seats = getSeats();
@@ -149,6 +162,22 @@ public class SalmansApplication implements CommandLineRunner {
 //        returnedSeats.add(new Seat(9));
 //        returnedSeats.add(new Seat(10));
         return returnedSeats;
+    }
+
+    private List<HairStyle> getHairstyles(){
+        List<HairStyle> styles = new ArrayList<>();
+        styles.add(new HairStyle("Crew Cut"));
+        styles.add(new HairStyle("Buzz Cut"));
+        styles.add(new HairStyle("Undercut"));
+        styles.add(new HairStyle("Mohawk"));
+        styles.add(new HairStyle("Ponytail"));
+        styles.add(new HairStyle("Quiff"));
+        styles.add(new HairStyle("Bangs"));
+        styles.add(new HairStyle("Bun"));
+        styles.add(new HairStyle("Beehive"));
+        styles.add(new HairStyle("Cornrows"));
+
+        return styles;
     }
 
     private List<BusinessDay> getBusinessDays() {

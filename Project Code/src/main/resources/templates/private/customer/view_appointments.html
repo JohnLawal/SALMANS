@@ -50,7 +50,7 @@
                                 <td class="mailbox-name"
                                     th:text="${appointment.serviceTime.startTime + ' to ' + appointment.serviceTime.endTime}"></td>
                                 <td class="mailbox-name" th:text="${appointment.hairstylist.fullName}"></td>
-                                <td class="mailbox-name" th:text="${appointment.hairStyle}"></td>
+                                <td class="mailbox-name" th:text="${appointment.hairStyle.hairstyleName}"></td>
                                 <td class="mailbox-name" th:text="${appointment.dateScheduled}"></td>
                             </tr>
                             </tbody>

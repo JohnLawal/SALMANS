@@ -4,6 +4,7 @@ public enum AppValues {
     SITE_ROOT("home"),
     USERS_SORT_BY("fullName"),
     APPOINTMENT_SORT_BY("dateScheduled"),
+    HAIRSTYLE_SORT_BY("hairstyleName"),
     ENTRIES_PER_PAGE(5),
     SITE_NAME("salmans"),
     REDIRECT("redirect:"),
@@ -35,5 +36,10 @@ public enum AppValues {
 
     public int iVal() {
         return this.iVal;
+    }
+
+    @Override
+    public String toString(){
+        return this.val;
     }
 }

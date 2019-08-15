@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{private/customer/master :: customer-master-layout}">
+<head>
+</head>
+<body>
+<!-- Content Wrapper. Contains page content -->
+<div layout:fragment="main-content" id="main-content" class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-clock-o"></i> <span th:text="${pageTitle}"></span>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a th:href="@{${pageLinks.dashboard}}"><i class="fa fa-dashboard"></i>
+                Dashboard </a></li>
+            <li class="active" th:text="${pageTitle}"></li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row" style=" margin: 16px;" th:if="${creationException} != ${null}">
+                    <div class="col-md-12">
+							<span
+                                    th:text="${creationException} " class="alert alert-danger">
+							</span>
+                    </div>
+                </div>
+                <div class="box box-primary">
+                    <div class="box-body table-responsive">
+                        <form id="newCitizenForm" class="form-horizontal form-material"
+                              th:action="@{${pageLinks.makeAppointment}}" th:object="${appointment}"
+                              method="post" role="form">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label>Select Appointment Date:</label>
+                                    <div class="input-group date">
+											<span th:if="${#fields.hasErrors('appointmentDate')}"
+                                                  th:errors="*{appointmentDate}" class="alert alert-danger"></span>
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="hidden" name="customer.userId" th:value="${user.userId}">
+                                        <input autocomplete="false" required type="date"
+                                               name="appointmentDate" class="form-control pull-right"
+                                               id="appointmentDate" th:value="${appointment.appointmentDate}">
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="serviceTime">Service Time</label>
+                                    <select id="serviceTime"
+                                            th:value="${appointment.serviceTime.timeId}" name="serviceTime.timeId"
+                                            class="form-control form-control-line select2" required>
+                                        <option th:each="serviceTime : ${serviceTimes}"
+                                                th:value="${serviceTime.timeId}"
+                                                th:text="${serviceTime.startTime} + ' to '+ ${serviceTime.endTime}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="hairStyle">Hair Style</label>
+                                    <select id="hairStyle"
+                                            th:value="${appointment.hairStyle.hairstyleId}" name="hairStyle.hairstyleId"
+                                            class="form-control form-control-line select2" required>
+                                        <option th:each="hairstyle : ${hairstyles}"
+                                                th:value="${hairstyle.hairstyleId}"
+                                                th:text="${hairstyle.hairstyleName}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="hairstylist">Hair Stylist</label>
+                                    <select id="hairstylist"
+                                            th:value="${appointment.hairstylist.userId}" name="hairstylist.userId"
+                                            class="form-control form-control-line select2" required>
+                                        <option th:each="hairstylist : ${hairstylists}"
+                                                th:value="${hairstylist.userId}"
+                                                th:text="${hairstylist.fullName}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary ">Book Appointment</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+</body>
+</html>
