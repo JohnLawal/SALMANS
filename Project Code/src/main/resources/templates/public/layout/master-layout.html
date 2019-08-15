@@ -7,64 +7,110 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="author" content="O. Chinedu">
-    <link rel="icon" href="favicon.ico">
-    <!--    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">-->
 
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/united/bootstrap.min.css" rel="stylesheet" integrity="sha384-WTtvlZJeRyCiKUtbQ88X1x9uHmKi0eHCbQ8irbzqSLkE0DpAZuixT5yFvgX0CjIu" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/master.css}">
-    <title>eDPR - Wakanda Record Tracking System</title>
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" th:href="@{/salmans/public/home/images/favicon.ico}" type="image/x-icon" />
+    <link rel="apple-touch-icon" th:href="@{/salmans/public/home/images/apple-touch-icon.png}" >
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/salmans/public/home/css/bootstrap.min.css}" >
+    <!-- Site CSS -->
+    <link rel="stylesheet" th:href="@{/salmans/public/home/style.css}" >
+    <!-- Colors CSS -->
+    <link rel="stylesheet" th:href="@{/salmans/public/home/css/colors.css}" >
+    <!-- ALL VERSION CSS -->
+    <link rel="stylesheet" th:href="@{/salmans/public/home/css/versions.css}" >
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" th:href="@{/salmans/public/home/css/responsive.css}" >
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/salmans/public/home/css/custom.css}" >
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<!--    <link rel="icon" href="favicon.ico">-->
+<!--    &lt;!&ndash;    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">&ndash;&gt;-->
+
+<!--    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/united/bootstrap.min.css" rel="stylesheet" integrity="sha384-WTtvlZJeRyCiKUtbQ88X1x9uHmKi0eHCbQ8irbzqSLkE0DpAZuixT5yFvgX0CjIu" crossorigin="anonymous">-->
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/master.css}">-->
+<!--    <title>eDPR - Wakanda Record Tracking System</title>-->
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a style="padding-right: 2em;" class="navbar-brand" th:href="@{${page_links.get('siteRoot')}}">Wakanda DPR System : : :  eDPR System</a>
-    <!--<span style="color: #ffffff;"> &nbsp; | &nbsp;</span>-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-<!--            <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">-->
-<!--                <a class="nav-link" th:href="@{${page_links.get('siteRoot')}}">About</a>-->
-<!--            </li>-->
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;float: right">
-                <a class="nav-link" th:href="@{${page_links.get('login')}}">Login</a>
-            </li>
-            <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;float: right">
-                <a class="nav-link" th:href="@{${page_links.get('siteRoot')}}">Sign Up</a>
-            </li>
-        </ul>
-
-<!--        <form class="form-inline my-2 my-lg-0">-->
-<!--           -->
-<!--            <span style="color: #ffffff; margin-right: 0em;" th:text="${#temporals.format(now, 'EEEE, MMM dd, yyyy')}" />-->
-<!--        </form>-->
+<!-- LOADER -->
+<div id="preloader">
+    <div class="cube-wrapper">
+        <div class="cube-folding">
+            <span class="leaf1"></span>
+            <span class="leaf2"></span>
+            <span class="leaf3"></span>
+            <span class="leaf4"></span>
+        </div>
+        <span class="loading" data-name="Loading">SMBarber Loading</span>
     </div>
-</nav>
+</div><!-- end loader -->
+<!-- END LOADER -->
 
-<p>&nbsp;</p>
+<div id="wrapper">
 
-<div class="container">
-    <!--Thymeleaf placeholder for the page Content-->
+    <!-- Sidebar-wrapper -->
+    <div id="sidebar-wrapper">
 
-    <th:block layout:fragment="content"></th:block>
-    <!--End placeholder-->
-</div>
+    <!-- End Sidebar-wrapper -->
 
-<footer class="footer" style="margin-top: 30px">
-    <div class="container">
-        <span class="text-muted">U. Chinedu : : : CS425-SWE FINAL EXAM</span><span style="float:right;" class="text-muted">&copy; August 2019</span>
+        <th:block layout:fragment="content"></th:block>
     </div>
-</footer>
+    <!-- End Sidebar-wrapper -->
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
+<!--<div class="container">-->
+<!--    &lt;!&ndash;Thymeleaf placeholder for the page Content&ndash;&gt;-->
+
+<!--   -->
+<!--    &lt;!&ndash;End placeholder&ndash;&gt;-->
+<!--</div>-->
+
+<!--<footer class="footer" style="margin-top: 30px">-->
+<!--    <div class="container">-->
+<!--        <span class="text-muted">U. Chinedu : : : CS425-SWE FINAL EXAM</span><span style="float:right;" class="text-muted">&copy; August 2019</span>-->
+<!--    </div>-->
+<!--</footer>-->
+
+<!--&lt;!&ndash; Bootstrap core JavaScript-->
+<!--================================================== &ndash;&gt;-->
+<!--&lt;!&ndash; Placed at the end of the document so the pages load faster &ndash;&gt;-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>-->
+
+<!-- ALL JS FILES -->
+<script th:src="@{/salmans/public/home/js/all.js}" ></script>
+<script th:src="@{/salmans/public/home/js/responsive-tabs.js}" ></script>
+<!-- ALL PLUGINS -->
+<script th:src="@{/salmans/public/home/js/custom.js}"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+    (function($) {
+        "use strict";
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        smoothScroll.init({
+            selector: '[data-scroll]', // Selector for links (must be a class, ID, data attribute, or element tag)
+            selectorHeader: null, // Selector for fixed headers (must be a valid CSS selector) [optional]
+            speed: 500, // Integer. How fast to complete the scroll in milliseconds
+            easing: 'easeInOutCubic', // Easing pattern to use
+            offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
+            callback: function ( anchor, toggle ) {} // Function to run after scrolling
+        });
+    })(jQuery);
+</script>
 
 </body>
 </html>

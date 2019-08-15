@@ -23,4 +23,10 @@ public class PageUrlLocator {
 
     ///AJAX CALLS
     public static final String CUSTOMER_VERIFY_DATE_URL = "/salmans/customer/verify_date";
+
+
+    //home pages
+    public static final String HOME_ABOUT_URL = "/salmans/customer/dashboard";
+    public static final String HOME_CONTACT_URL = "/salmans/customer/view_appointments";
+    public static final String HOME_APPOINTMENT_URL = "/salmans/customer/make_appointment";
 }
