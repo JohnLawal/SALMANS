@@ -158,6 +158,28 @@ public class UserController {
         }
     }
 
+    @GetMapping(value = {PageUrlLocator.CUSTOMER_MAKE_REVIEW_URL})
+    public ModelAndView displayCustomerMakeReviewPage(Principal principal) {
+        String userEmail = principal.getName();
+        User user = userServiceImplementation.getUserByEmail(userEmail).get();
+        ModelAndView modelAndView = getDefaultCustomerModelAndView(user
+                , "Book An Appointment"
+                , PageFileLocator.CUSTOMER_MAKE_APPOINTMENT_PAGE.toString());
+
+        Appointment appointment = new Appointment();
+        appointment.setServiceTime(new ServiceTime());
+        appointment.setHairStyle(new HairStyle());
+        appointment.setHairstylist(new User());
+        appointment.setCustomer(user);
+
+        modelAndView.addObject("appointment", appointment);
+        modelAndView.addAllObjects(getMakeAppointmentModelMap());
+
+        return modelAndView;
+    }
+
+
+
 
     private ModelAndView getDefaultCustomerModelAndView(User user, String pageTitle, String viewName) {
         ModelAndView modelAndView = new ModelAndView();

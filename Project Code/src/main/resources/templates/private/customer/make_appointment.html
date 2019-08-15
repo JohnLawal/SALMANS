@@ -59,7 +59,7 @@
                                     <select id="serviceTime"
                                             th:value="${appointment.serviceTime.timeId}" name="serviceTime.timeId"
                                             class="form-control form-control-line select2" required>
-                                        <option th:each="serviceTime : ${serviceTimes}"
+                                        <option th:each="serviceTime : ${serviceTimes}"  th:selected="${appointment.serviceTime.timeId != null && appointment.serviceTime.timeId ==  serviceTime.timeId}"
                                                 th:value="${serviceTime.timeId}"
                                                 th:text="${serviceTime.startTime} + ' to '+ ${serviceTime.endTime}"></option>
                                     </select>
@@ -71,9 +71,9 @@
                                     <select id="hairStyle"
                                             th:value="${appointment.hairStyle.hairstyleId}" name="hairStyle.hairstyleId"
                                             class="form-control form-control-line select2" required>
-                                        <option th:each="hairstyle : ${hairstyles}"
-                                                th:value="${hairstyle.hairstyleId}"
-                                                th:text="${hairstyle.hairstyleName}"></option>
+                                        <option th:each="hairStyle : ${hairstyles}" th:selected="${appointment.hairStyle.hairstyleId != null && appointment.hairStyle.hairstyleId ==  hairStyle.hairstyleId}"
+                                                th:value="${hairStyle.hairstyleId}"
+                                                th:text="${hairStyle.hairstyleName}"></option>
                                     </select>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                     <select id="hairstylist"
                                             th:value="${appointment.hairstylist.userId}" name="hairstylist.userId"
                                             class="form-control form-control-line select2" required>
-                                        <option th:each="hairstylist : ${hairstylists}"
+                                        <option th:each="hairstylist : ${hairstylists}" th:selected="${appointment.hairstylist.userId != null && appointment.hairstylist.userId ==  hairstylist.userId}"
                                                 th:value="${hairstylist.userId}"
                                                 th:text="${hairstylist.fullName}"></option>
                                     </select>
