@@ -12,6 +12,7 @@
     <artifactId>salmans</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>salmans</name>
+    <packaging>jar</packaging>
     <description>Salon Appointment Booking Application For CS425 Project</description>
 
     <properties>
