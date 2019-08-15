@@ -4,6 +4,7 @@ public enum AppValues {
     SITE_ROOT("home"),
     USERS_SORT_BY("fullName"),
     APPOINTMENT_SORT_BY("dateScheduled"),
+    REVIEWS_SORT_BY("dateOfReview"),
     HAIRSTYLE_SORT_BY("hairstyleName"),
     ENTRIES_PER_PAGE(5),
     SITE_NAME("salmans"),

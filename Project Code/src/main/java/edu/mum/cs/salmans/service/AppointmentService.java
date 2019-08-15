@@ -16,6 +16,8 @@ public interface AppointmentService {
 
     public void saveAppointment(Appointment appointment);
 
+    public void deleteAppointmentById(Integer appointmentId);
+
     public boolean defaultBusinessDaysExist();
 
     public boolean defaultSeatsExist();

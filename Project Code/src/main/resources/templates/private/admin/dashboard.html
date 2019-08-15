@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{private/customer/master :: customer-master-layout}">
+      layout:decorate="~{private/admin/master :: admin-master-layout}">
 <head>
 </head>
 <body>
@@ -26,15 +26,13 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-body table-responsive">
-                        <h3>Welcome, <span  th:text="${user.fullName}"></span></h3>
+                        <h3>Welcome, Admin</h3>
                         <p>On this system, you can <a
-                                th:href="@{${pageLinks.makeAppointment}}">Make An Appointment</a> for a hairstyle.</p>
+                                th:href="@{${pageLinks.viewAppointments}}">View All Appointments</a>.</p>
                         <p>
-                            You can also <a th:href="@{${pageLinks.viewAppointments}}">View Your Existing Appointments</a>
-                            or <a th:href="@{${pageLinks.makeReview}}">Make A Review </a> of A Service You Received From Us.
+                            You can also <a th:href="@{${pageLinks.viewBusinessPerformance}}">View Your Business Performance</a>
+                            and many more! Features are displayed on your menu.
                         </p>
-
-
 
                         <p>More Features will be added in due time.</p>
                     </div>

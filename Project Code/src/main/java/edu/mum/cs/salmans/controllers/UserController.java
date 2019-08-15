@@ -1,9 +1,6 @@
 package edu.mum.cs.salmans.controllers;
 
-import edu.mum.cs.salmans.models.Appointment;
-import edu.mum.cs.salmans.models.HairStyle;
-import edu.mum.cs.salmans.models.ServiceTime;
-import edu.mum.cs.salmans.models.User;
+import edu.mum.cs.salmans.models.*;
 import edu.mum.cs.salmans.serviceImpl.AppointmentServiceImplementation;
 import edu.mum.cs.salmans.serviceImpl.HairStyleServiceImplementation;
 import edu.mum.cs.salmans.serviceImpl.UserServiceImplementation;
@@ -16,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -48,7 +42,7 @@ public class UserController {
         User user = userServiceImplementation.getUserByEmail(userEmail).get();
 
         return getDefaultCustomerModelAndView(user
-                , "Welcome To Our Appointment Scheduling App!"
+                , "Dashboard"
                 , PageFileLocator.CUSTOMER_DASHBOARD_PAGE.toString());
     }
 
@@ -119,25 +113,25 @@ public class UserController {
                                 return AppValues.REDIRECT.val() + PageUrlLocator.CUSTOMER_VIEW_APPOINTMENTS_URL;
                             } else {
                                 model.addAttribute("creationException", "Sorry, This Hairstyle is Unavailable");
-                                model.addAllAttributes(getCustomerModelMap(user,"Book An Appointment"));
+                                model.addAllAttributes(getCustomerModelMap(user, "Book An Appointment"));
                                 model.addAllAttributes(getMakeAppointmentModelMap());
                                 return PageFileLocator.CUSTOMER_MAKE_APPOINTMENT_PAGE.toString();
                             }
                         } else {
                             model.addAttribute("creationException", "Sorry, This Spot is Unavailable. Please try another set of options");
-                            model.addAllAttributes(getCustomerModelMap(user,"Book An Appointment"));
+                            model.addAllAttributes(getCustomerModelMap(user, "Book An Appointment"));
                             model.addAllAttributes(getMakeAppointmentModelMap());
                             return PageFileLocator.CUSTOMER_MAKE_APPOINTMENT_PAGE.toString();
                         }
                     } else {
                         model.addAttribute("creationException", "Sorry, This Hairstylist does not exist in our Salon");
-                        model.addAllAttributes(getCustomerModelMap(user,"Book An Appointment"));
+                        model.addAllAttributes(getCustomerModelMap(user, "Book An Appointment"));
                         model.addAllAttributes(getMakeAppointmentModelMap());
                         return PageFileLocator.CUSTOMER_MAKE_APPOINTMENT_PAGE.toString();
                     }
                 } else {
                     model.addAttribute("creationException", "Sorry, This Service Time is Unavailable");
-                    model.addAllAttributes(getCustomerModelMap(user,"Book An Appointment"));
+                    model.addAllAttributes(getCustomerModelMap(user, "Book An Appointment"));
                     model.addAllAttributes(getMakeAppointmentModelMap());
                     return PageFileLocator.CUSTOMER_MAKE_APPOINTMENT_PAGE.toString();
                 }
@@ -145,40 +139,63 @@ public class UserController {
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
                 model.addAttribute("creationException", "Sorry, An Error Occurred While Trying To Create An Appointment");
-                model.addAllAttributes(getCustomerModelMap(user,"Book An Appointment"));
+                model.addAllAttributes(getCustomerModelMap(user, "Book An Appointment"));
                 model.addAllAttributes(getMakeAppointmentModelMap());
                 return PageFileLocator.CUSTOMER_MAKE_APPOINTMENT_PAGE.toString();
             }
         } else {
             System.out.println(bindingResult.getAllErrors());
             model.addAttribute("errors", bindingResult.getAllErrors());
-            model.addAllAttributes(getCustomerModelMap(user,"Book An Appointment"));
+            model.addAllAttributes(getCustomerModelMap(user, "Book An Appointment"));
             model.addAllAttributes(getMakeAppointmentModelMap());
             return PageFileLocator.CUSTOMER_MAKE_APPOINTMENT_PAGE.toString();
         }
     }
+
+    @GetMapping(value = {PageUrlLocator.CUSTOMER_CANCEL_APPOINTMENT_URL})
+    public String deleteAppointment(@PathVariable Integer appointmentId, Model model) {
+        appointmentServiceImplementation.deleteAppointmentById(appointmentId);
+        return AppValues.REDIRECT.val() + PageUrlLocator.CUSTOMER_VIEW_APPOINTMENTS_URL;
+    }
+
 
     @GetMapping(value = {PageUrlLocator.CUSTOMER_MAKE_REVIEW_URL})
     public ModelAndView displayCustomerMakeReviewPage(Principal principal) {
         String userEmail = principal.getName();
         User user = userServiceImplementation.getUserByEmail(userEmail).get();
         ModelAndView modelAndView = getDefaultCustomerModelAndView(user
-                , "Book An Appointment"
-                , PageFileLocator.CUSTOMER_MAKE_APPOINTMENT_PAGE.toString());
+                , "Make A Review"
+                , PageFileLocator.CUSTOMER_MAKE_REVIEW_PAGE.toString());
 
-        Appointment appointment = new Appointment();
-        appointment.setServiceTime(new ServiceTime());
-        appointment.setHairStyle(new HairStyle());
-        appointment.setHairstylist(new User());
-        appointment.setCustomer(user);
-
-        modelAndView.addObject("appointment", appointment);
-        modelAndView.addAllObjects(getMakeAppointmentModelMap());
+        modelAndView.addObject("review", new Review());
 
         return modelAndView;
     }
 
+    @PostMapping(value = {PageUrlLocator.CUSTOMER_MAKE_REVIEW_URL})
+    public String makeReview(@Valid @ModelAttribute("review") Review review,
+                             BindingResult bindingResult, Model model, Principal principal) {
+        String userEmail = principal.getName();
+        User user = userServiceImplementation.getUserByEmail(userEmail).get();
+        if (!bindingResult.hasErrors()) {
+            review.setDateOfReview(LocalDate.now());
+            review.setCustomer(user);
+            userServiceImplementation.saveReview(review);
 
+            model.addAttribute("creationInfo", "Success, This Review has been submitted");
+            model.addAllAttributes(getCustomerModelMap(user, "Make A Review"));
+            model.addAttribute("review", new Review());
+
+            return PageFileLocator.CUSTOMER_MAKE_REVIEW_PAGE.toString();
+
+        } else {
+            System.out.println(bindingResult.getAllErrors());
+
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            model.addAllAttributes(getCustomerModelMap(user, "Make A Review"));
+            return PageFileLocator.CUSTOMER_MAKE_REVIEW_PAGE.toString();
+        }
+    }
 
 
     private ModelAndView getDefaultCustomerModelAndView(User user, String pageTitle, String viewName) {

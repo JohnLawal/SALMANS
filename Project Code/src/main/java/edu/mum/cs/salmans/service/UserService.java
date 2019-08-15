@@ -1,7 +1,9 @@
 package edu.mum.cs.salmans.service;
 
+import edu.mum.cs.salmans.models.Review;
 import edu.mum.cs.salmans.models.Role;
 import edu.mum.cs.salmans.models.User;
+import org.springframework.data.domain.Page;
 
 import javax.management.relation.RoleNotFoundException;
 import java.util.List;
@@ -9,20 +11,29 @@ import java.util.Optional;
 
 public interface UserService {
 
-    public boolean defaultRolesExist();
+    boolean defaultRolesExist();
 
-    public void saveRole(Role role);
+    void saveRole(Role role);
 
-    public Role getRole(String roleName);
+    Role getRole(String roleName);
 
-    public void saveUser(User user);
+    void saveUser(User user);
 
-    public Optional<User> getUserByEmail(String email);
+    void saveReview(Review review);
 
     public User findUserByEmail(String email);
 
-    public Optional<User> getHairstylistWithId(Integer userId);
-
     public List<User> getAllHairStylists();
+
     public  User saveCustomer(User customer) throws RoleNotFoundException;
+
+    Page<Review> getAllReviewsPaged(int page);
+
+    Optional<User> getUserByEmail(String email);
+
+    Optional<User> getHairstylistWithId(Integer userId);
+
+    Page<User> getAllHairstylistsPaged(int page);
+
+    Page<User> getAllCustomersPaged(int page);
 }

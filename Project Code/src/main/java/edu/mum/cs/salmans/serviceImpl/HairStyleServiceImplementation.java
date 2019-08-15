@@ -4,6 +4,8 @@ import edu.mum.cs.salmans.models.HairStyle;
 import edu.mum.cs.salmans.repository.HairStyleRepository;
 import edu.mum.cs.salmans.service.HairStyleService;
 import edu.mum.cs.salmans.utility.AppValues;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,11 @@ public class HairStyleServiceImplementation implements HairStyleService {
     @Override
     public List<HairStyle> getAllHairStyles() {
         return hairStyleRepository.findAll(Sort.by(AppValues.HAIRSTYLE_SORT_BY.toString()));
+    }
+
+    @Override
+    public Page<HairStyle> getAllHairstylesPaged(int page) {
+        return hairStyleRepository.findAll(PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(AppValues.HAIRSTYLE_SORT_BY.toString())));
     }
 
     @Override
