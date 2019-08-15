@@ -1,11 +1,16 @@
 package edu.mum.cs.salmans.serviceImpl;
 
+import edu.mum.cs.salmans.models.Appointment;
+import edu.mum.cs.salmans.models.Review;
 import edu.mum.cs.salmans.models.Role;
 import edu.mum.cs.salmans.models.User;
+import edu.mum.cs.salmans.repository.ReviewRepository;
 import edu.mum.cs.salmans.repository.RoleRepository;
 import edu.mum.cs.salmans.repository.UserRepository;
 import edu.mum.cs.salmans.service.UserService;
 import edu.mum.cs.salmans.utility.AppValues;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +21,12 @@ import java.util.Optional;
 public class UserServiceImplementation implements UserService {
     private RoleRepository roleRepository;
     private UserRepository userRepository;
+    private ReviewRepository reviewRepository;
 
-    public UserServiceImplementation(RoleRepository roleRepository, UserRepository userRepository) {
+    public UserServiceImplementation(RoleRepository roleRepository, UserRepository userRepository, ReviewRepository reviewRepository) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
+        this.reviewRepository = reviewRepository;
     }
 
     @Override
@@ -40,6 +47,26 @@ public class UserServiceImplementation implements UserService {
     @Override
     public void saveUser(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public void saveReview(Review review) {
+        reviewRepository.save(review);
+    }
+
+    @Override
+    public Page<Review> getAllReviewsPaged(int page) {
+        return reviewRepository.findAll(PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(Sort.Direction.DESC, AppValues.REVIEWS_SORT_BY.val())));
+    }
+
+    @Override
+    public Page<User> getAllCustomersPaged(int page) {
+        return userRepository.findByRoleEquals(getRole(AppValues.ROLE_CUSTOMER.toString()), PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(AppValues.USERS_SORT_BY.toString())));
+    }
+
+    @Override
+    public Page<User> getAllHairstylistsPaged(int page) {
+        return userRepository.findByRoleEquals(getRole(AppValues.ROLE_HAIRSTYLIST.toString()), PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(AppValues.USERS_SORT_BY.toString())));
     }
 
     @Override

@@ -53,6 +53,11 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
+    public void deleteAppointmentById(Integer appointmentId) {
+        appointmentRepository.deleteById(appointmentId);
+    }
+
+    @Override
     public boolean defaultBusinessDaysExist() {
         return businessDayRepository.count() > 0;
     }
@@ -105,12 +110,12 @@ public class AppointmentServiceImplementation implements AppointmentService {
 
     @Override
     public Page<Appointment> getAllAppointmentsPaged(int page) {
-        return appointmentRepository.findAll(PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(AppValues.APPOINTMENT_SORT_BY.val())));
+        return appointmentRepository.findAll(PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(Sort.Direction.DESC, AppValues.APPOINTMENT_SORT_BY.val())));
     }
 
     @Override
     public Page<Appointment> getAllAppointmentsBookedByUserPaged(User user, int page) {
-        return appointmentRepository.findAllByCustomerEquals(user, PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(AppValues.APPOINTMENT_SORT_BY.val())));
+        return appointmentRepository.findAllByCustomerEquals(user, PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(Sort.Direction.DESC, AppValues.APPOINTMENT_SORT_BY.val())));
     }
 
 

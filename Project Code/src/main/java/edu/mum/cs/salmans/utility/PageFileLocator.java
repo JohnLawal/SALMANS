@@ -13,6 +13,11 @@ public enum PageFileLocator {
     ADMIN_CREATE_TIMETABLE_PAGE("private/admin/create_timetable"),
     ADMIN_VIEW_APPOINTMENTS_PAGE("private/admin/view_appointments"),
     ADMIN_VIEW_BUSINESS_PERFORMANCE_PAGE("private/admin/view_business_performance"),
+    ADMIN_VIEW_REVIEWS_PAGE("private/admin/view_reviews"),
+    ADMIN_VIEW_CUSTOMERS_PAGE("private/admin/view_customers"),
+    ADMIN_VIEW_HAIRSTYLISTS_PAGE("private/admin/view_hairstylists"),
+    ADMIN_VIEW_HAIRSTYLES_PAGE("private/admin/view_hairstyles"),
+
     //    HAIRSTYLIST
     HAIRSTYLIST_VIEW_APPOINTMENTS_PAGE("private/hairstylist/view_appointments"),
     //    CUSTOMER

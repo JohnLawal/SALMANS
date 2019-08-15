@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{private/customer/master :: customer-master-layout}">
+      layout:decorate="~{private/admin/master :: admin-master-layout}">
 <head>
 </head>
 <body>
@@ -21,13 +21,6 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            <div class="col-md-12">
-                <a style="margin: 10px" th:href="@{${pageLinks.makeAppointment}}"
-                   class="btn btn-warning">Make An Appointment</a>
-            </div>
-        </div>
-        <!-- row -->
-        <div class="row">
             <div class="col-xs-12">
                 <div class="box box-primary">
                     <div class="box-body table-responsive">
@@ -37,6 +30,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Appointment Date</th>
+                                <th>Customer</th>
                                 <th>Service Time</th>
                                 <th>Hairstylist</th>
                                 <th>Hairstyle</th>
@@ -48,13 +42,14 @@
                             <tr th:each="appointment,iterStat : ${appointments}">
                                 <th scope="row" th:text="${iterStat.count}"></th>
                                 <td class="mailbox-name" th:text="${appointment.appointmentDate}"></td>
+                                <td class="mailbox-name" th:text="${appointment.customer.fullName}"></td>
                                 <td class="mailbox-name"
                                     th:text="${appointment.serviceTime.startTime + ' to ' + appointment.serviceTime.endTime}"></td>
                                 <td class="mailbox-name" th:text="${appointment.hairstylist.fullName}"></td>
                                 <td class="mailbox-name" th:text="${appointment.hairStyle.hairstyleName}"></td>
                                 <td class="mailbox-name" th:text="${appointment.dateScheduled}"></td>
                                 <td class="mailbox-name">
-                                    <a class="btn btn-warning" th:onclick="'cancelAppointment(\'' + ${appointment.appointmentId} +'\');'">
+                                    <a class="btn btn-warning" th:onclick="'cancelAppointmentByAdmin(\'' + ${appointment.appointmentId} +'\');'">
                                     <i class="fa fa-trash"></i>
                                 </a>
                                 </td>

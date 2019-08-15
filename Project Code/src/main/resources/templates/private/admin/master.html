@@ -22,7 +22,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" th:href="@{/assets/dist/css/salmans.min.css}">
     <!-- Skins-->
-    <link rel="stylesheet" th:href="@{/assets/dist/css/skin-green.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/dist/css/skin-yellow.min.css}">
     <!-- Select2 -->
     <link rel="stylesheet" th:href="@{/assets/plugins/select2/select2.min.css}">
     <!-- bootstrap datepicker -->
@@ -39,7 +39,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-yellow sidebar-mini">
 <div class="wrapper" id="body-wrapper">
     <header id="header" class="main-header">
         <!-- Logo -->
@@ -99,25 +99,42 @@
                     <li class="treeview"><a th:href="@{${pageLinks.dashboard}}"><i
                             class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 
-                    <li class="treeview"><a href="#"><i class="fa fa-clock-o"></i>
-                        <span>Appointments</span><span class="pull-right-container"> <i
-                                class="fa fa-angle-left pull-right"></i></span></a>
+                    <li class="treeview"><a th:href="@{${pageLinks.viewAppointments}}"><i
+                            class="fa fa-clock-o"></i> <span>View Appointments</span></a></li>
 
+                    <li class="treeview"><a th:href="@{${pageLinks.viewReviews}}"><i
+                            class="fa fa-comment-o"></i> <span>View Reviews</span></a></li>
+
+                    <li class="treeview"><a th:href="@{${pageLinks.viewBusinessPerformance}}"><i
+                            class="fa fa-bar-chart-o"></i> <span>View Business Performance</span></a></li>
+
+                    <li class="treeview"><a th:href="@{${pageLinks.viewCustomers}}"><i
+                            class="fa fa-users"></i> <span>View Customers</span></a></li>
+
+                    <li class="treeview"><a href="#"><i class="fa fa-smile-o"></i>
+                        <span>Hairstyles</span><span class="pull-right-container"> <i
+                                class="fa fa-angle-left pull-right"></i></span></a>
                         <ul class="treeview-menu">
-                            <li><a th:href="@{${pageLinks.makeAppointment}}"><i
-                                    class="fa fa-circle-o"></i> <span>Make An Appointment</span></a></li>
-                            <li><a th:href="@{${pageLinks.viewAppointments}}"><i
-                                    class="fa fa-circle-o"></i> <span>View My Appointments</span></a></li>
+                            <li><a th:href="@{${pageLinks.addHairstyle}}"><i
+                                    class="fa fa-circle-o"></i> <span>Add Hairstyle</span></a></li>
+                            <li><a th:href="@{${pageLinks.viewHairstyles}}"><i
+                                    class="fa fa-circle-o"></i> <span>View All Hairstyles</span></a></li>
                         </ul>
                     </li>
 
-                    <li class="treeview"><a th:href="@{${pageLinks.makeReview}}"><i
-                            class="fa fa-comment-o"></i> <span>Make A Review</span></a></li>
-
+                    <li class="treeview"><a href="#"><i class="fa fa-scissors"></i>
+                        <span>Hairstylists</span><span class="pull-right-container"> <i
+                                class="fa fa-angle-left pull-right"></i></span></a>
+                        <ul class="treeview-menu">
+                            <li><a th:href="@{${pageLinks.registerHairstylist}}"><i
+                                    class="fa fa-circle-o"></i> <span>Register Hairstylist</span></a></li>
+                            <li><a th:href="@{${pageLinks.viewHairstylists}}"><i
+                                    class="fa fa-circle-o"></i> <span>View All Hairstylists</span></a></li>
+                        </ul>
+                    </li>
 
                     <li class="treeview"><a th:href="@{${pageLinks.logout}}"><i
                             class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
-
                 </ul>
             </section>
             <!-- /.sidebar -->

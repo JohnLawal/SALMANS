@@ -9,9 +9,14 @@ public class PageUrlLocator {
     //    ADMIN
     public static final String ADMIN_DASHBOARD_URL = "/salmans/admin/dashboard";
     public static final String ADMIN_ADD_HAIRSTYLE_URL = "/salmans/admin/add_hairstyle";
+    public static final String ADMIN_VIEW_HAIRSTYLES_URL = "/salmans/admin/view_hairstyles";
     public static final String ADMIN_REGISTER_HAIRSTYLIST_URL = "/salmans/admin/register_hairstylist";
+    public static final String ADMIN_VIEW_HAIRSTYLISTS_URL = "/salmans/admin/view_hairstylists";
+    public static final String ADMIN_VIEW_CUSTOMERS = "/salmans/admin/view_customers";
     public static final String ADMIN_CREATE_TIMETABLE_URL = "/salmans/admin/create_timetable";
     public static final String ADMIN_VIEW_APPOINTMENTS_URL = "/salmans/admin/view_appointments";
+    public static final String ADMIN_CANCEL_APPOINTMENT_URL = "/salmans/admin/cancel_appointment/{appointmentId}";
+    public static final String ADMIN_VIEW_REVIEWS_URL = "/salmans/admin/view_reviews";
     public static final String ADMIN_VIEW_BUSINESS_PERFORMANCE_URL = "/salmans/admin/view_business_performance";
     //    HAIRSTYLIST
     public static final String HAIRSTYLIST_VIEW_APPOINTMENTS_URL = "/salmans/hairstylist/view_appointments";

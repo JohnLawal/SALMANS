@@ -17,10 +17,14 @@ public class AppHelper {
         {
             put("siteRoot", PageUrlLocator.HOME_URL);
             put("dashboard", PageUrlLocator.ADMIN_DASHBOARD_URL);
-            put("registerHairstyle", PageUrlLocator.ADMIN_ADD_HAIRSTYLE_URL);
+            put("addHairstyle", PageUrlLocator.ADMIN_ADD_HAIRSTYLE_URL);
+            put("viewHairstyles", PageUrlLocator.ADMIN_VIEW_HAIRSTYLES_URL);
             put("registerHairstylist", PageUrlLocator.ADMIN_REGISTER_HAIRSTYLIST_URL);
+            put("viewHairstylists", PageUrlLocator.ADMIN_VIEW_HAIRSTYLISTS_URL);
+            put("viewCustomers", PageUrlLocator.ADMIN_VIEW_CUSTOMERS);
             put("createTimeTable", PageUrlLocator.ADMIN_CREATE_TIMETABLE_URL);
             put("viewAppointments", PageUrlLocator.ADMIN_VIEW_APPOINTMENTS_URL);
+            put("viewReviews", PageUrlLocator.ADMIN_VIEW_REVIEWS_URL);
             put("viewBusinessPerformance", PageUrlLocator.ADMIN_VIEW_BUSINESS_PERFORMANCE_URL);
             put("logout", PageUrlLocator.LOGOUT_URL);
         }
