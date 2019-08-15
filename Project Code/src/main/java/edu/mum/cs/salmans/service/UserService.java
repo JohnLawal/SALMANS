@@ -21,11 +21,16 @@ public interface UserService {
 
     void saveReview(Review review);
 
-    public User findUserByEmail(String email);
+    User findUserByEmail(String email);
 
-    public List<User> getAllHairStylists();
+    List<User> getAllHairStylists();
 
-    public  User saveCustomer(User customer) throws RoleNotFoundException;
+
+    int getNumberOfHairstylists();
+
+    int getNumberOfCustomers();
+
+    User saveCustomer(User customer) throws RoleNotFoundException;
 
     Page<Review> getAllReviewsPaged(int page);
 
@@ -36,4 +41,8 @@ public interface UserService {
     Page<User> getAllHairstylistsPaged(int page);
 
     Page<User> getAllCustomersPaged(int page);
+
+    List<User> getAllCustomers();
+
+    Long getNumberOfAllReviews();
 }

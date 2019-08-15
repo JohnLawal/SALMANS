@@ -94,6 +94,26 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
+    public List<User> getAllCustomers() {
+        return userRepository.findByRoleEquals(getRole(AppValues.ROLE_CUSTOMER.toString()), Sort.by(AppValues.USERS_SORT_BY.toString()));
+    }
+
+    @Override
+    public int getNumberOfHairstylists() {
+        return getAllHairStylists().size();
+    }
+
+    @Override
+    public int getNumberOfCustomers() {
+        return getAllCustomers().size();
+    }
+
+    @Override
+    public Long getNumberOfAllReviews() {
+        return reviewRepository.count();
+    }
+
+    @Override
     public User saveCustomer(User customer) throws RoleNotFoundException {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));

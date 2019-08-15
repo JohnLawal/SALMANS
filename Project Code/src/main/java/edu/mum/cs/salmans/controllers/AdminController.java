@@ -1,5 +1,8 @@
 package edu.mum.cs.salmans.controllers;
 
+import edu.mum.cs.salmans.models.Review;
+import edu.mum.cs.salmans.models.Role;
+import edu.mum.cs.salmans.models.Seat;
 import edu.mum.cs.salmans.models.User;
 import edu.mum.cs.salmans.serviceImpl.AppointmentServiceImplementation;
 import edu.mum.cs.salmans.serviceImpl.HairStyleServiceImplementation;
@@ -10,12 +13,13 @@ import edu.mum.cs.salmans.utility.PageFileLocator;
 import edu.mum.cs.salmans.utility.PageUrlLocator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,9 +41,16 @@ public class AdminController {
         String userEmail = principal.getName();
         User admin = userServiceImplementation.getUserByEmail(userEmail).get();
 
-        return getDefaultAdminModelAndView(admin
+        ModelAndView modelAndView = getDefaultAdminModelAndView(admin
                 , "Dashboard"
                 , PageFileLocator.ADMIN_DASHBOARD_PAGE.toString());
+
+        modelAndView.addObject("appointmentsCount", appointmentServiceImplementation.getNumberOfAllAppointments());
+        modelAndView.addObject("customersCount", userServiceImplementation.getNumberOfCustomers());
+        modelAndView.addObject("hairstylistCount", userServiceImplementation.getNumberOfHairstylists());
+        modelAndView.addObject("reviewsCount", userServiceImplementation.getNumberOfAllReviews());
+
+        return modelAndView;
     }
 
 
@@ -89,6 +100,52 @@ public class AdminController {
         modelAndView.addObject("currentPageNo", page);
 
         return modelAndView;
+    }
+
+    @GetMapping(value = {PageUrlLocator.ADMIN_REGISTER_HAIRSTYLIST_URL})
+    public ModelAndView displayAdminRegisterHairstylistPage(Principal principal) {
+        String userEmail = principal.getName();
+        User user = userServiceImplementation.getUserByEmail(userEmail).get();
+        ModelAndView modelAndView = getDefaultAdminModelAndView(user
+                , "Register A Hairstylists"
+                , PageFileLocator.ADMIN_REGISTER_HAIRSTYLIST_PAGE.toString());
+
+        User newHairstylist = new User();
+        newHairstylist.setSeat(new Seat());
+        modelAndView.addObject("hairstylist", newHairstylist);
+
+        return modelAndView;
+    }
+
+    @PostMapping(value = {PageUrlLocator.ADMIN_REGISTER_HAIRSTYLIST_URL})
+    public String registerNewHairstylist(@Valid @ModelAttribute("hairstylist") User hairstylist,
+                                         BindingResult bindingResult, Model model, Principal principal) {
+        String userEmail = principal.getName();
+        User admin = userServiceImplementation.getUserByEmail(userEmail).get();
+        if (!bindingResult.hasErrors()) {
+            Seat seat = hairstylist.getSeat();
+            hairstylist.setSeat(appointmentServiceImplementation.saveSeat(seat));
+
+            Role hairstylistRole = userServiceImplementation.getRole(AppValues.ROLE_HAIRSTYLIST.toString());
+            hairstylist.setRole(hairstylistRole);
+            hairstylist.setDateRegistered(LocalDate.now());
+            userServiceImplementation.saveUser(hairstylist);
+
+            model.addAttribute("creationInfo", "Success, This Hairstylist has been registered");
+            model.addAllAttributes(getAdminModelMap(admin, "Register A Hairstylists"));
+            User newHairstylist = new User();
+            newHairstylist.setSeat(new Seat());
+            model.addAttribute("hairstylist", newHairstylist);
+
+            return PageFileLocator.ADMIN_REGISTER_HAIRSTYLIST_PAGE.toString();
+        } else {
+            System.out.println(bindingResult.getAllErrors());
+
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            model.addAllAttributes(getAdminModelMap(admin, "Register A Hairstylists"));
+            return PageFileLocator.ADMIN_REGISTER_HAIRSTYLIST_PAGE.toString();
+        }
+
     }
 
 

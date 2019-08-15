@@ -43,8 +43,8 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
-    public void saveSeat(Seat seat) {
-        seatRepository.save(seat);
+    public Seat saveSeat(Seat seat) {
+      return  seatRepository.save(seat);
     }
 
     @Override
@@ -99,6 +99,14 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
+    public Long getNumberOfAllAppointments() {
+        return appointmentRepository.count();
+    }
+
+
+
+
+    @Override
     public List<ServiceTime> getAllServiceTimes() {
         return serviceTimeRepository.findAll();
     }
@@ -116,6 +124,11 @@ public class AppointmentServiceImplementation implements AppointmentService {
     @Override
     public Page<Appointment> getAllAppointmentsBookedByUserPaged(User user, int page) {
         return appointmentRepository.findAllByCustomerEquals(user, PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(Sort.Direction.DESC, AppValues.APPOINTMENT_SORT_BY.val())));
+    }
+
+    @Override
+    public Page<Appointment> getAllAppointmentsBookedForHairstylistPaged(User hairstylist, int page) {
+        return appointmentRepository.findAllByHairstylistEquals(hairstylist, PageRequest.of(page, AppValues.ENTRIES_PER_PAGE.iVal(), Sort.by(Sort.Direction.DESC, AppValues.APPOINTMENT_SORT_BY.val())));
     }
 
 

@@ -25,7 +25,7 @@ public class User {
 
     @NotBlank(message = "Password is Required")
     @Column(nullable = false)
-    @Size(min = 8, message = "Password size must be 8 and above")
+    @Size(min = 6, message = "Password size must be 6 and above")
     private String password;
 
     @Column(nullable = false)

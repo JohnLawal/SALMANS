@@ -12,7 +12,7 @@ public interface AppointmentService {
 
     public void saveServiceTime(ServiceTime serviceTime);
 
-    public void saveSeat(Seat seat);
+    public Seat saveSeat(Seat seat);
 
     public void saveAppointment(Appointment appointment);
 
@@ -28,6 +28,8 @@ public interface AppointmentService {
 
     public List<Seat> getAllSeats();
 
+    Long getNumberOfAllAppointments();
+
     public List<ServiceTime> getAllServiceTimes();
 
     public Optional<ServiceTime> getServiceTimeWithId(Integer serviceTimeId);
@@ -35,6 +37,8 @@ public interface AppointmentService {
     Page<Appointment> getAllAppointmentsPaged(int page);
 
     Page<Appointment> getAllAppointmentsBookedByUserPaged(User user, int page);
+
+    Page<Appointment> getAllAppointmentsBookedForHairstylistPaged(User hairstylist, int page);
 
     public void makeAppointment(Appointment appointment);
 

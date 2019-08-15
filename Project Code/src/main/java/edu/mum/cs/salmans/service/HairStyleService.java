@@ -16,5 +16,7 @@ public interface HairStyleService {
     Page<HairStyle> getAllHairstylesPaged(int page);
 
     public boolean defaultStylesExist();
+
+
 }
 
