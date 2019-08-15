@@ -10,6 +10,10 @@ public class AppHelper {
             put("login", PageUrlLocator.LOGIN_URL);
             put("logout", PageUrlLocator.LOGOUT_URL);
             put("signUp", PageUrlLocator.SIGN_UP_URL);
+            put("about", PageUrlLocator.HOME_ABOUT_URL);
+            // I have to add this link here to take it to index page.
+            put("viewAppointments", PageUrlLocator.CUSTOMER_VIEW_APPOINTMENTS_URL);
+
         }
     };
 

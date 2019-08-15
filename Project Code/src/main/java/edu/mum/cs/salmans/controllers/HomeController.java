@@ -35,6 +35,14 @@ public class HomeController {
         return PageFileLocator.HOME_PAGE.toString();
     }
 
+    @RequestMapping(value= PageUrlLocator.HOME_ABOUT_URL)
+    public String displayAbout(Model model) {
+        model.addAttribute("page_links", AppHelper.publicPageLinks);
+        model.addAttribute("now", LocalDate.now());
+        return PageFileLocator.ABOUT_PAGE.toString();
+    }
+
+
     @RequestMapping(value= PageUrlLocator.LOGIN_URL)
     public String displayLogin(Model model) {
         model.addAttribute("page_links", AppHelper.publicPageLinks);
@@ -73,5 +81,7 @@ public class HomeController {
         }
         return "redirect:" + PageFileLocator.CUSTOMER_DASHBOARD_PAGE;
     }
+
+
 
 }
