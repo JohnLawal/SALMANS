@@ -32,7 +32,8 @@ public class PageUrlLocator {
 
 
     //home pages
-    public static final String HOME_ABOUT_URL = "/salmans/customer/dashboard";
+    public static final String HOME_ABOUT_URL = "/salmans/about";
+
     public static final String HOME_CONTACT_URL = "/salmans/customer/view_appointments";
     public static final String HOME_APPOINTMENT_URL = "/salmans/customer/make_appointment";
 }

@@ -22,16 +22,19 @@
 <th:block layout:fragment="content">
     <div class="side-top">
         <div class="logo-sidebar">
-            <a  th:href="@{${page_links.get('siteRoot')}}" href="index.html"><img th:src="@{/salmans/public/home/images/logos/logo.png}" alt="image"></a>
+            <a  th:href="@{${page_links.get('siteRoot')}}" href="index.html">
+                <img th:src="@{/salmans/public/home/images/logos/logo.png}" alt="image">
+            </a>
         </div>
         <ul class="sidebar-nav">
             <li><a class="active" th:href="@{${page_links.get('siteRoot')}}">Home</a></li>
+            <li><a th:href="@{${page_links.get('viewAppointments')}}" >Appointment</a></li>
             <li><a th:href="@{${page_links.get('login')}}">Login</a></li>
             <li><a th:href="@{${page_links.get('signUp')}}">Sign Up</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li><a th:href="@{${page_links.get('about')}}">About Us</a></li>
             <li><a href="services.html">Our Services</a></li>
             <li><a href="barbers.html">Our Barbers</a></li>
-            <li><a href="appointment.html">Appointment</a></li>
+
 
             <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -50,8 +53,18 @@
                                 <div class="col-md-8 col-md-offset-2 col-sm-12">
                                     <div class="big-tagline text-center">
                                         <h2><strong>The Barber Shop</strong><br>
-                                            in New York</h2>
-                                        <p class="lead">With SMBarber responsive landing page template, you can showcase your next barber shop websites!</p>
+                                            in MUM(Fairfield)</h2>
+<!--                                        <p class="lead">With SMBarber responsive landing page template, you can showcase your next barber shop websites!</p>-->
+                                        <a th:href="@{${page_links.get('viewAppointments')}}" class="btn btn-light btn-radius btn-brd grd1 effect-1 butn">APPOINTMENT NOW</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center item">
+                                <div class="col-md-8 col-md-offset-2 col-sm-12">
+                                    <div class="big-tagline text-center">
+                                        <h2><strong>The Barber Shop</strong><br>
+                                            in Ottumwa</h2>
+<!--                                        <p class="lead">With SMBarber responsive landing page template, you can showcase your next barber shop websites!</p>-->
                                         <a href="#" class="btn btn-light btn-radius btn-brd grd1 effect-1 butn">APPOINTMENT NOW</a>
                                     </div>
                                 </div>
@@ -60,18 +73,8 @@
                                 <div class="col-md-8 col-md-offset-2 col-sm-12">
                                     <div class="big-tagline text-center">
                                         <h2><strong>The Barber Shop</strong><br>
-                                            in New York</h2>
-                                        <p class="lead">With SMBarber responsive landing page template, you can showcase your next barber shop websites!</p>
-                                        <a href="#" class="btn btn-light btn-radius btn-brd grd1 effect-1 butn">APPOINTMENT NOW</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center item">
-                                <div class="col-md-8 col-md-offset-2 col-sm-12">
-                                    <div class="big-tagline text-center">
-                                        <h2><strong>The Barber Shop</strong><br>
-                                            in New York</h2>
-                                        <p class="lead">With SMBarber responsive landing page template, you can showcase your next barber shop websites!</p>
+                                            in Des Moines</h2>
+<!--                                        <p class="lead">With SMBarber responsive landing page template, you can showcase your next barber shop websites!</p>-->
                                         <a href="#" class="btn btn-light btn-radius btn-brd grd1 effect-1 butn">APPOINTMENT NOW</a>
                                     </div>
                                 </div>
@@ -91,7 +94,7 @@
                         <div class="col-md-8 col-md-offset-2 text-center">
                             <div class="message-box">
                                 <h4>About</h4>
-                                <h2>Welcome to SMBarber</h2>
+                                <h2>Welcome to SALmans</h2>
                                 <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
 
                                 <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed vitae rutrum neque. Ut id erat sit amet libero bibendum aliquam. Donec ac egestas libero, eu bibendum risus. Phasellus et congue justo. </p>
@@ -186,10 +189,11 @@
                     </div><!-- end title -->
 
                     <div class="row dev-list text-center">
+
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
                             <div class="widget clearfix">
                                 <div class="hover-br">
-                                    <img src="uploads/barber_team_01.jpg" alt="" class="img-responsive">
+                                    <img th:src="@{/salmans/public/home/uploads/Abdella_salmans.jpg}" alt="" class="img-responsive">
                                     <div class="social-up-hover">
                                         <div class="footer-social">
                                             <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
@@ -200,8 +204,8 @@
                                     </div>
                                 </div>
                                 <div class="widget-title">
-                                    <h3>Soren Bo Bostian</h3>
-                                    <small>The Founder</small>
+                                    <h3>Mohammed Abdella</h3>
+                                    <small>The Barber</small>
                                 </div>
                                 <!-- end title -->
                                 <p>Hello guys, I am Soren from Sirbistana. I am senior art director and founder of The Barber Shop Company.</p>
@@ -211,7 +215,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
                             <div class="widget clearfix">
                                 <div class="hover-br">
-                                    <img th:src="@{/salmans/public/home/uploads/barber_team_03.jpg}" alt="" class="img-responsive">
+                                    <img th:src="@{/salmans/public/home/uploads/Chinedu_salmans.jpg}" alt="" class="img-responsive">
                                     <div class="social-up-hover">
                                         <div class="footer-social">
                                             <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
@@ -222,7 +226,7 @@
                                     </div>
                                 </div>
                                 <div class="widget-title">
-                                    <h3>Bryan Saftler</h3>
+                                    <h3>Chinedu Ugwu</h3>
                                     <small>The Barber</small>
                                 </div>
                                 <!-- end title -->
@@ -233,7 +237,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
                             <div class="widget clearfix">
                                 <div class="hover-br">
-                                    <img th:src="@{/salmans/public/home/uploads/barber_team_02.jpg}" alt="" class="img-responsive">
+                                    <img th:src="@{/salmans/public/home/uploads/John_salmans.jpg}" alt="" class="img-responsive">
                                     <div class="social-up-hover">
                                         <div class="footer-social">
                                             <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
@@ -244,7 +248,7 @@
                                     </div>
                                 </div>
                                 <div class="widget-title">
-                                    <h3>Matthew Bayliss</h3>
+                                    <h3>John Lawal</h3>
                                     <small>The Barber</small>
                                 </div>
                                 <!-- end title -->
